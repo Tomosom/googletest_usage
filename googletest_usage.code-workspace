@@ -4,5 +4,16 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.o": true,
+			"**/.a": true,
+
+			"googletest-release-1.11.0/.github":true,
+			"googletest-release-1.11.0/ci":true,
+			"googletest-release-1.11.0/docs":true,
+			"docs_for_vnote":true
+		}
+	}
 }
