@@ -1,6 +1,6 @@
-# Googletest FAQ
+# 1. Googletest FAQ
 
-## Why should test suite names and test names not contain underscore?
+## 1.1. Why should test suite names and test names not contain underscore?
 
 {: .callout .note}
 Note: Googletest reserves underscore (`_`) for special purpose keywords, such as
@@ -58,7 +58,7 @@ may (just may) break with a new compiler (or a new version of the compiler you
 are using) or with a new version of googletest. Therefore it's best to follow
 the rule.
 
-## Why does googletest support `EXPECT_EQ(NULL, ptr)` and `ASSERT_EQ(NULL, ptr)` but not `EXPECT_NE(NULL, ptr)` and `ASSERT_NE(NULL, ptr)`?
+## 1.2. Why does googletest support `EXPECT_EQ(NULL, ptr)` and `ASSERT_EQ(NULL, ptr)` but not `EXPECT_NE(NULL, ptr)` and `ASSERT_NE(NULL, ptr)`?
 
 First of all, you can use `nullptr` with each of these macros, e.g.
 `EXPECT_EQ(ptr, nullptr)`, `EXPECT_NE(ptr, nullptr)`, `ASSERT_EQ(ptr, nullptr)`,
@@ -94,7 +94,7 @@ combined to form new matchers, while the `EXPECT_NE`, etc, macros cannot be
 easily combined. Therefore we want to invest more in the matchers than in the
 `EXPECT_XX()` macros.
 
-## I need to test that different implementations of an interface satisfy some common requirements. Should I use typed tests or value-parameterized tests?
+## 1.3. I need to test that different implementations of an interface satisfy some common requirements. Should I use typed tests or value-parameterized tests?
 
 For testing various implementations of the same interface, either typed tests or
 value-parameterized tests can get it done. It's really up to you the user to
@@ -128,7 +128,7 @@ both approaches a try. Practice is a much better way to grasp the subtle
 differences between the two tools. Once you have some concrete experience, you
 can much more easily decide which one to use the next time.
 
-## I got some run-time errors about invalid proto descriptors when using `ProtocolMessageEquals`. Help!
+## 1.4. I got some run-time errors about invalid proto descriptors when using `ProtocolMessageEquals`. Help!
 
 {: .callout .note}
 **Note:** `ProtocolMessageEquals` and `ProtocolMessageEquiv` are *deprecated*
@@ -149,7 +149,7 @@ If you see this, your `.proto` file is broken and needs to be fixed by making
 the types fully qualified. The new definition of `ProtocolMessageEquals` and
 `ProtocolMessageEquiv` just happen to reveal your bug.
 
-## My death test modifies some state, but the change seems lost after the death test finishes. Why?
+## 1.5. My death test modifies some state, but the change seems lost after the death test finishes. Why?
 
 Death tests (`EXPECT_DEATH`, etc) are executed in a sub-process s.t. the
 expected crash won't kill the test program (i.e. the parent process). As a
@@ -162,7 +162,7 @@ methods, the parent process will think the calls have never occurred. Therefore,
 you may want to move your `EXPECT_CALL` statements inside the `EXPECT_DEATH`
 macro.
 
-## EXPECT_EQ(htonl(blah), blah_blah) generates weird compiler errors in opt mode. Is this a googletest bug?
+## 1.6. EXPECT_EQ(htonl(blah), blah_blah) generates weird compiler errors in opt mode. Is this a googletest bug?
 
 Actually, the bug is in `htonl()`.
 
@@ -180,7 +180,7 @@ template argument, and thus doesn't compile in opt mode when `a` contains a call
 to `htonl()`. It is difficult to make `EXPECT_EQ` bypass the `htonl()` bug, as
 the solution must work with different compilers on various platforms.
 
-## The compiler complains about "undefined references" to some static const member variables, but I did define them in the class body. What's wrong?
+## 1.7. The compiler complains about "undefined references" to some static const member variables, but I did define them in the class body. What's wrong?
 
 If your class has a static data member:
 
@@ -215,7 +215,7 @@ class Foo {
 };
 ```
 
-## Can I derive a test fixture from another?
+## 1.8. Can I derive a test fixture from another?
 
 Yes.
 
@@ -269,14 +269,14 @@ googletest has no limit on how deep the hierarchy can be.
 For a complete example using derived test fixtures, see
 [sample5_unittest.cc](https://github.com/google/googletest/blob/master/googletest/samples/sample5_unittest.cc).
 
-## My compiler complains "void value not ignored as it ought to be." What does this mean?
+## 1.9. My compiler complains "void value not ignored as it ought to be." What does this mean?
 
 You're probably using an `ASSERT_*()` in a function that doesn't return `void`.
 `ASSERT_*()` can only be used in `void` functions, due to exceptions being
 disabled by our build system. Please see more details
 [here](advanced.md#assertion-placement).
 
-## My death test hangs (or seg-faults). How do I fix it?
+## 1.10. My death test hangs (or seg-faults). How do I fix it?
 
 In googletest, death tests are run in a child process and the way they work is
 delicate. To write death tests you really need to understand how they work—see
@@ -303,7 +303,7 @@ In the end, this boils down to good concurrent programming. You have to make
 sure that there are no race conditions or deadlocks in your program. No silver
 bullet - sorry!
 
-## Should I use the constructor/destructor of the test fixture or SetUp()/TearDown()? {#CtorVsSetUp}
+## 1.11. Should I use the constructor/destructor of the test fixture or SetUp()/TearDown()? {#CtorVsSetUp}
 
 The first thing to remember is that googletest does **not** reuse the same test
 fixture object across multiple tests. For each `TEST_F`, googletest will create
@@ -352,12 +352,12 @@ You may still want to use `SetUp()/TearDown()` in the following cases:
     googletest assertions in a destructor if your code could run on such a
     platform.
 
-## The compiler complains "no matching function to call" when I use ASSERT_PRED*. How do I fix it?
+## 1.12. The compiler complains "no matching function to call" when I use ASSERT_PRED*. How do I fix it?
 
 See details for [`EXPECT_PRED*`](reference/assertions.md#EXPECT_PRED) in the
 Assertions Reference.
 
-## My compiler complains about "ignoring return value" when I call RUN_ALL_TESTS(). Why?
+## 1.13. My compiler complains about "ignoring return value" when I call RUN_ALL_TESTS(). Why?
 
 Some people had been ignoring the return value of `RUN_ALL_TESTS()`. That is,
 instead of
@@ -388,7 +388,7 @@ return value of `main()`.
 But how could we introduce a change that breaks existing tests? Well, in this
 case, the code was already broken in the first place, so we didn't break it. :-)
 
-## My compiler complains that a constructor (or destructor) cannot return a value. What's going on?
+## 1.14. My compiler complains that a constructor (or destructor) cannot return a value. What's going on?
 
 Due to a peculiarity of C++, in order to support the syntax for streaming
 messages to an `ASSERT_*`, e.g.
@@ -403,7 +403,7 @@ content of your constructor/destructor to a private void member function, or
 switch to `EXPECT_*()` if that works. This
 [section](advanced.md#assertion-placement) in the user's guide explains it.
 
-## My SetUp() function is not called. Why?
+## 1.15. My SetUp() function is not called. Why?
 
 C++ is case-sensitive. Did you spell it as `Setup()`?
 
@@ -411,7 +411,7 @@ Similarly, sometimes people spell `SetUpTestSuite()` as `SetupTestSuite()` and
 wonder why it's never called.
 
 
-## I have several test suites which share the same test fixture logic, do I have to define a new test fixture class for each of them? This seems pretty tedious.
+## 1.16. I have several test suites which share the same test fixture logic, do I have to define a new test fixture class for each of them? This seems pretty tedious.
 
 You don't have to. Instead of
 
@@ -441,7 +441,7 @@ TEST_F(BarTest, Abc) { ... }
 TEST_F(BarTest, Def) { ... }
 ```
 
-## googletest output is buried in a whole bunch of LOG messages. What do I do?
+## 1.17. googletest output is buried in a whole bunch of LOG messages. What do I do?
 
 The googletest output is meant to be a concise and human-friendly report. If
 your test generates textual output itself, it will mix with the googletest
@@ -456,7 +456,7 @@ example:
 $ ./my_test > gtest_output.txt
 ```
 
-## Why should I prefer test fixtures over global variables?
+## 1.18. Why should I prefer test fixtures over global variables?
 
 There are several good reasons:
 
@@ -470,7 +470,7 @@ There are several good reasons:
     with global variables. This is useful if many test suites have something in
     common.
 
-## What can the statement argument in ASSERT_DEATH() be?
+## 1.19. What can the statement argument in ASSERT_DEATH() be?
 
 `ASSERT_DEATH(statement, matcher)` (or any death assertion macro) can be used
 wherever *`statement`* is valid. So basically *`statement`* can be any C++
@@ -519,7 +519,7 @@ TEST(MyDeathTest, CompoundStatement) {
 }
 ```
 
-## I have a fixture class `FooTest`, but `TEST_F(FooTest, Bar)` gives me error ``"no matching function for call to `FooTest::FooTest()'"``. Why?
+## 1.20. I have a fixture class `FooTest`, but `TEST_F(FooTest, Bar)` gives me error ``"no matching function for call to `FooTest::FooTest()'"``. Why?
 
 Googletest needs to be able to create objects of your test fixture class, so it
 must have a default constructor. Normally the compiler will define one for you.
@@ -533,7 +533,7 @@ However, there are cases where you have to define your own:
     list of the constructor. (Early versions of `gcc` doesn't force you to
     initialize the const member. It's a bug that has been fixed in `gcc 4`.)
 
-## Why does ASSERT_DEATH complain about previous threads that were already joined?
+## 1.21. Why does ASSERT_DEATH complain about previous threads that were already joined?
 
 With the Linux pthread library, there is no turning back once you cross the line
 from a single thread to multiple threads. The first time you create a thread, a
@@ -546,7 +546,7 @@ The new NPTL thread library doesn't suffer from this problem, as it doesn't
 create a manager thread. However, if you don't control which machine your test
 runs on, you shouldn't depend on this.
 
-## Why does googletest require the entire test suite, instead of individual tests, to be named *DeathTest when it uses ASSERT_DEATH?
+## 1.22. Why does googletest require the entire test suite, instead of individual tests, to be named *DeathTest when it uses ASSERT_DEATH?
 
 googletest does not interleave tests from different test suites. That is, it
 runs all tests in one test suite first, and then runs all tests in the next test
@@ -571,7 +571,7 @@ interleave tests from different test suites, we need to run all tests in the
 `FooTest` case before running any test in the `BarTest` case. This contradicts
 with the requirement to run `BarTest.DefDeathTest` before `FooTest.Uvw`.
 
-## But I don't like calling my entire test suite \*DeathTest when it contains both death tests and non-death tests. What do I do?
+## 1.23. But I don't like calling my entire test suite \*DeathTest when it contains both death tests and non-death tests. What do I do?
 
 You don't have to, but if you like, you may split up the test suite into
 `FooTest` and `FooDeathTest`, where the names make it clear that they are
@@ -589,7 +589,7 @@ TEST_F(FooDeathTest, Uvw) { ... EXPECT_DEATH(...) ... }
 TEST_F(FooDeathTest, Xyz) { ... ASSERT_DEATH(...) ... }
 ```
 
-## googletest prints the LOG messages in a death test's child process only when the test fails. How can I see the LOG messages when the death test succeeds?
+## 1.24. googletest prints the LOG messages in a death test's child process only when the test fails. How can I see the LOG messages when the death test succeeds?
 
 Printing the LOG messages generated by the statement inside `EXPECT_DEATH()`
 makes it harder to search for real problems in the parent's log. Therefore,
@@ -600,7 +600,7 @@ break the death test (e.g. by changing the regex pattern it is expected to
 match). Admittedly, this is a hack. We'll consider a more permanent solution
 after the fork-and-exec-style death tests are implemented.
 
-## The compiler complains about `no match for 'operator<<'` when I use an assertion. What gives?
+## 1.25. The compiler complains about `no match for 'operator<<'` when I use an assertion. What gives?
 
 If you use a user-defined type `FooType` in an assertion, you must make sure
 there is an `std::ostream& operator<<(std::ostream&, const FooType&)` function
@@ -610,7 +610,7 @@ In addition, if `FooType` is declared in a name space, the `<<` operator also
 needs to be defined in the *same* name space. See
 [Tip of the Week #49](http://abseil.io/tips/49) for details.
 
-## How do I suppress the memory leak messages on Windows?
+## 1.26. How do I suppress the memory leak messages on Windows?
 
 Since the statically initialized googletest singleton requires allocations on
 the heap, the Visual C++ memory leak detector will report memory leaks at the
@@ -619,7 +619,7 @@ end of the program run. The easiest way to avoid this is to use the
 statically initialized heap objects. See MSDN for more details and additional
 heap check/debug routines.
 
-## How can my code detect if it is running in a test?
+## 1.27. How can my code detect if it is running in a test?
 
 If you write code that sniffs whether it's running in a test and does different
 things accordingly, you are leaking test-only logic into production code and
@@ -640,7 +640,7 @@ the rule of ending your test program names with `_test`, you can use the
 *horrible* hack of sniffing your executable name (`argv[0]` in `main()`) to know
 whether the code is under test.
 
-## How do I temporarily disable a test?
+## 1.28. How do I temporarily disable a test?
 
 If you have a broken test that you cannot fix right away, you can add the
 `DISABLED_` prefix to its name. This will exclude it from execution. This is
@@ -650,7 +650,7 @@ still compiled (and thus won't rot).
 To include disabled tests in test execution, just invoke the test program with
 the `--gtest_also_run_disabled_tests` flag.
 
-## Is it OK if I have two separate `TEST(Foo, Bar)` test methods defined in different namespaces?
+## 1.29. Is it OK if I have two separate `TEST(Foo, Bar)` test methods defined in different namespaces?
 
 Yes.
 

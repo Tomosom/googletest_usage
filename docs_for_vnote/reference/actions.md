@@ -1,10 +1,10 @@
-# Actions Reference
+# 1. Actions Reference
 
 [**Actions**](../gmock_for_dummies.md#actions-what-should-it-do) specify what a
 mock function should do when invoked. This page lists the built-in actions
 provided by GoogleTest. All actions are defined in the `::testing` namespace.
 
-## Returning a Value
+## 1.1. Returning a Value
 
 |                                   |                                               |
 | :-------------------------------- | :-------------------------------------------- |
@@ -18,7 +18,7 @@ provided by GoogleTest. All actions are defined in the `::testing` namespace.
 | `ReturnRefOfCopy(value)`          | Return a reference to a copy of `value`; the  copy lives as long as the action. |
 | `ReturnRoundRobin({a1, ..., ak})` | Each call will return the next `ai` in the list, starting at the beginning when the end of the list is reached. |
 
-## Side Effects
+## 1.2. Side Effects
 
 |                                    |                                         |
 | :--------------------------------- | :-------------------------------------- |
@@ -33,7 +33,7 @@ provided by GoogleTest. All actions are defined in the `::testing` namespace.
 | `SetErrnoAndReturn(error, value)` | Set `errno` to `error` and return `value`. |
 | `Throw(exception)` | Throws the given exception, which can be any copyable value. Available since v1.1.0. |
 
-## Using a Function, Functor, or Lambda as an Action
+## 1.3. Using a Function, Functor, or Lambda as an Action
 
 In the following, by "callable" we mean a free function, `std::function`,
 functor, or lambda.
@@ -84,7 +84,7 @@ InvokeArgument<2>(5, string("Hi"), std::ref(foo))
 calls the mock function's #2 argument, passing to it `5` and `string("Hi")` by
 value, and `foo` by reference.
 
-## Default Action
+## 1.4. Default Action
 
 | Matcher       | Description                                            |
 | :------------ | :----------------------------------------------------- |
@@ -94,7 +94,7 @@ value, and `foo` by reference.
 **Note:** due to technical reasons, `DoDefault()` cannot be used inside a
 composite action - trying to do so will result in a run-time error.
 
-## Composite Actions
+## 1.5. Composite Actions
 
 |                                |                                             |
 | :----------------------------- | :------------------------------------------ |
@@ -104,7 +104,7 @@ composite action - trying to do so will result in a run-time error.
 | `WithArgs<N1, N2, ..., Nk>(a)` | Pass the selected (0-based) arguments of the mock function to action `a` and perform it. |
 | `WithoutArgs(a)`               | Perform action `a` without any arguments. |
 
-## Defining Actions
+## 1.6. Defining Actions
 
 |                                    |                                         |
 | :--------------------------------- | :-------------------------------------- |

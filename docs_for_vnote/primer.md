@@ -1,6 +1,6 @@
-# Googletest Primer
+# 1. Googletest Primer
 
-## Introduction: Why googletest?
+## 1.1. Introduction: Why googletest?
 
 *googletest* helps you write better C++ tests.
 
@@ -42,7 +42,7 @@ Since googletest is based on the popular xUnit architecture, you'll feel right
 at home if you've used JUnit or PyUnit before. If not, it will take you about 10
 minutes to learn the basics and get started. So let's go!
 
-## Beware of the nomenclature
+## 1.2. Beware of the nomenclature
 
 {: .callout .note}
 _Note:_ There might be some confusion arising from different definitions of the
@@ -76,7 +76,7 @@ Exercise a particular program path with specific input values and verify the res
 [istqb test case]: http://glossary.istqb.org/en/search/test%20case
 [istqb test suite]: http://glossary.istqb.org/en/search/test%20suite
 
-## Basic Concepts
+## 1.3. Basic Concepts
 
 When using googletest, you start by writing *assertions*, which are statements
 that check whether a condition is true. An assertion's result can be *success*,
@@ -96,7 +96,7 @@ A *test program* can contain multiple test suites.
 We'll now explain how to write a test program, starting at the individual
 assertion level and building up to tests and test suites.
 
-## Assertions
+## 1.4. Assertions
 
 googletest assertions are macros that resemble function calls. You test a class
 or function by making assertions about its behavior. When an assertion fails,
@@ -142,7 +142,7 @@ much more. There are even assertions that enable you to verify more complex
 states by providing custom predicates. For the complete list of assertions
 provided by GoogleTest, see the [Assertions Reference](reference/assertions.md).
 
-## Simple Tests
+## 1.5. Simple Tests
 
 To create a test:
 
@@ -202,7 +202,7 @@ for
 
 **Availability**: Linux, Windows, Mac.
 
-## Test Fixtures: Using the Same Data Configuration for Multiple Tests {#same-data-multiple-tests}
+## 1.6. Test Fixtures: Using the Same Data Configuration for Multiple Tests {#same-data-multiple-tests}
 
 If you find yourself writing two or more tests that operate on similar data, you
 can use a *test fixture*. This allows you to reuse the same configuration of
@@ -334,7 +334,7 @@ When these tests run, the following happens:
 
 **Availability**: Linux, Windows, Mac.
 
-## Invoking the Tests
+## 1.7. Invoking the Tests
 
 `TEST()` and `TEST_F()` implicitly register their tests with googletest. So,
 unlike with many other C++ testing frameworks, you don't have to re-list all
@@ -378,7 +378,7 @@ If a fatal failure happens the subsequent steps will be skipped.
 
 **Availability**: Linux, Windows, Mac.
 
-## Writing the main() Function
+## 1.8. Writing the main() Function
 
 Most users should _not_ need to write their own `main` function and instead link
 with `gtest_main` (as opposed to with `gtest`), which defines a suitable entry
@@ -471,7 +471,7 @@ the `gtest_main` library and you are good to go.
 {: .callout .note}
 NOTE: `ParseGUnitFlags()` is deprecated in favor of `InitGoogleTest()`.
 
-## Known Limitations
+## 1.9. Known Limitations
 
 *   Google Test is designed to be thread-safe. The implementation is thread-safe
     on systems where the `pthreads` library is available. It is currently

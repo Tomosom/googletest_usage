@@ -1,11 +1,11 @@
-# Legacy gMock FAQ
+# 1. Legacy gMock FAQ
 
-### When I call a method on my mock object, the method for the real object is invoked instead. What's the problem?
+### 1.1.1. When I call a method on my mock object, the method for the real object is invoked instead. What's the problem?
 
 In order for a method to be mocked, it must be *virtual*, unless you use the
 [high-perf dependency injection technique](gmock_cook_book.md#MockingNonVirtualMethods).
 
-### Can I mock a variadic function?
+### 1.1.2. Can I mock a variadic function?
 
 You cannot mock a variadic function (i.e. a function taking ellipsis (`...`)
 arguments) directly in gMock.
@@ -23,7 +23,7 @@ Ellipsis arguments are inherited from C and not really a C++ feature. They are
 unsafe to use and don't work with arguments that have constructors or
 destructors. Therefore we recommend to avoid them in C++ as much as possible.
 
-### MSVC gives me warning C4301 or C4373 when I define a mock method with a const parameter. Why?
+### 1.1.3. MSVC gives me warning C4301 or C4373 when I define a mock method with a const parameter. Why?
 
 If you compile this using Microsoft Visual C++ 2005 SP1:
 
@@ -79,7 +79,7 @@ void Bar(int* p);         // Neither p nor *p is const.
 void Bar(const int* p);  // p is not const, but *p is.
 ```
 
-### I can't figure out why gMock thinks my expectations are not satisfied. What should I do?
+### 1.1.4. I can't figure out why gMock thinks my expectations are not satisfied. What should I do?
 
 You might want to run your test with `--gmock_verbose=info`. This flag lets
 gMock print a trace of every mock function call it receives. By studying the
@@ -91,7 +91,7 @@ return type has no default value set.", then try
 unexpected calls on mocks without default actions don't print out a detailed
 comparison between the actual arguments and the expected arguments.
 
-### My program crashed and `ScopedMockLog` spit out tons of messages. Is it a gMock bug?
+### 1.1.5. My program crashed and `ScopedMockLog` spit out tons of messages. Is it a gMock bug?
 
 gMock and `ScopedMockLog` are likely doing the right thing here.
 
@@ -113,7 +113,7 @@ using ::testing::Not;
       .Times(AnyNumber());
 ```
 
-### How can I assert that a function is NEVER called?
+### 1.1.6. How can I assert that a function is NEVER called?
 
 ```cpp
 using ::testing::_;
@@ -122,7 +122,7 @@ using ::testing::_;
       .Times(0);
 ```
 
-### I have a failed test where gMock tells me TWICE that a particular expectation is not satisfied. Isn't this redundant?
+### 1.1.7. I have a failed test where gMock tells me TWICE that a particular expectation is not satisfied. Isn't this redundant?
 
 When gMock detects a failure, it prints relevant information (the mock function
 arguments, the state of relevant expectations, and etc) to help the user debug.
@@ -134,7 +134,7 @@ see the same description of the state twice. They are however *not* redundant,
 as they refer to *different points in time*. The fact they are the same *is*
 interesting information.
 
-### I get a heapcheck failure when using a mock object, but using a real object is fine. What can be wrong?
+### 1.1.8. I get a heapcheck failure when using a mock object, but using a real object is fine. What can be wrong?
 
 Does the class (hopefully a pure interface) you are mocking have a virtual
 destructor?
@@ -167,7 +167,7 @@ class Derived : public Base {
 By changing `~Base()` to virtual, `~Derived()` will be correctly called when
 `delete p` is executed, and the heap checker will be happy.
 
-### The "newer expectations override older ones" rule makes writing expectations awkward. Why does gMock do that?
+### 1.1.9. The "newer expectations override older ones" rule makes writing expectations awkward. Why does gMock do that?
 
 When people complain about this, often they are referring to code like:
 
@@ -232,7 +232,7 @@ behavior for the common case early (e.g. in the mock's constructor or the test
 fixture's set-up phase) and customize it with more specific rules later. If
 gMock searches from front to back, this very useful pattern won't be possible.
 
-### gMock prints a warning when a function without EXPECT_CALL is called, even if I have set its behavior using ON_CALL. Would it be reasonable not to show the warning in this case?
+### 1.1.10. gMock prints a warning when a function without EXPECT_CALL is called, even if I have set its behavior using ON_CALL. Would it be reasonable not to show the warning in this case?
 
 When choosing between being neat and being safe, we lean toward the latter. So
 the answer is that we think it's better to show the warning.
@@ -269,7 +269,7 @@ Also, you can control the verbosity by specifying `--gmock_verbose=error`. Other
 values are `info` and `warning`. If you find the output too noisy when
 debugging, just choose a less verbose level.
 
-### How can I delete the mock function's argument in an action?
+### 1.1.11. How can I delete the mock function's argument in an action?
 
 If your mock function takes a pointer argument and you want to delete that
 argument, you can use testing::DeleteArg<N>() to delete the N'th (zero-indexed)
@@ -284,7 +284,7 @@ using ::testing::_;
       .WillOnce(testing::DeleteArg<0>()));
 ```
 
-### How can I perform an arbitrary action on a mock function's argument?
+### 1.1.12. How can I perform an arbitrary action on a mock function's argument?
 
 If you find yourself needing to perform some action that's not supported by
 gMock directly, remember that you can define your own actions using
@@ -302,7 +302,7 @@ using ::testing::Invoke;
       .WillOnce(Invoke(MyAction(...)));
 ```
 
-### My code calls a static/global function. Can I mock it?
+### 1.1.13. My code calls a static/global function. Can I mock it?
 
 You can, but you need to make some changes.
 
@@ -316,7 +316,7 @@ This Google Testing Blog
 [post](https://testing.googleblog.com/2008/06/defeat-static-cling.html) says it
 excellently. Check it out.
 
-### My mock object needs to do complex stuff. It's a lot of pain to specify the actions. gMock sucks!
+### 1.1.14. My mock object needs to do complex stuff. It's a lot of pain to specify the actions. gMock sucks!
 
 I know it's not a question, but you get an answer for free any way. :-)
 
@@ -341,7 +341,7 @@ actions. If you experience this and think that mocks suck, you are just not
 using the right tool for your problem. Or, you might be trying to solve the
 wrong problem. :-)
 
-### I got a warning "Uninteresting function call encountered - default action taken.." Should I panic?
+### 1.1.15. I got a warning "Uninteresting function call encountered - default action taken.." Should I panic?
 
 By all means, NO! It's just an FYI. :-)
 
@@ -359,7 +359,7 @@ uninteresting calls, you should investigate what's going on. To make your life
 easier, gMock dumps the stack trace when an uninteresting call is encountered.
 From that you can figure out which mock function it is, and how it is called.
 
-### I want to define a custom action. Should I use Invoke() or implement the ActionInterface interface?
+### 1.1.16. I want to define a custom action. Should I use Invoke() or implement the ActionInterface interface?
 
 Either way is fine - you want to choose the one that's more convenient for your
 circumstance.
@@ -372,7 +372,7 @@ types of functions the action can be used in, and implementing `ActionInterface`
 is the way to go here. See the implementation of `Return()` in
 `testing/base/public/gmock-actions.h` for an example.
 
-### I use SetArgPointee() in WillOnce(), but gcc complains about "conflicting return type specified". What does it mean?
+### 1.1.17. I use SetArgPointee() in WillOnce(), but gcc complains about "conflicting return type specified". What does it mean?
 
 You got this error as gMock has no idea what value it should return when the
 mock method is called. `SetArgPointee()` says what the side effect is, but
@@ -383,7 +383,7 @@ being mocked.
 See this [recipe](gmock_cook_book.md#mocking-side-effects) for more details and
 an example.
 
-### I have a huge mock class, and Microsoft Visual C++ runs out of memory when compiling it. What can I do?
+### 1.1.18. I have a huge mock class, and Microsoft Visual C++ runs out of memory when compiling it. What can I do?
 
 We've noticed that when the `/clr` compiler flag is used, Visual C++ uses 5~6
 times as much memory when compiling a mock class. We suggest to avoid `/clr`

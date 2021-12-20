@@ -1,8 +1,8 @@
-# gMock Cheat Sheet
+# 1. gMock Cheat Sheet
 
-## Defining a Mock Class
+## 1.1. Defining a Mock Class
 
-### Mocking a Normal Class {#MockClass}
+### 1.1.1. Mocking a Normal Class {#MockClass}
 
 Given
 
@@ -49,7 +49,7 @@ StrictMock<MockFoo> strict_foo;  // The type is a subclass of MockFoo.
 **Note:** A mock object is currently naggy by default. We may make it nice by
 default in the future.
 
-### Mocking a Class Template {#MockTemplate}
+### 1.1.2. Mocking a Class Template {#MockTemplate}
 
 Class templates can be mocked just like any class.
 
@@ -77,7 +77,7 @@ class MockStack : public StackInterface<Elem> {
 };
 ```
 
-### Specifying Calling Conventions for Mock Functions
+### 1.1.3. Specifying Calling Conventions for Mock Functions
 
 If your mock function doesn't use the default calling convention, you can
 specify it by adding `Calltype(convention)` to `MOCK_METHOD`'s 4th parameter.
@@ -91,7 +91,7 @@ For example,
 
 where `STDMETHODCALLTYPE` is defined by `<objbase.h>` on Windows.
 
-## Using Mocks in Tests {#UsingMocks}
+## 1.2. Using Mocks in Tests {#UsingMocks}
 
 The typical work flow is:
 
@@ -127,7 +127,7 @@ TEST(BarTest, DoesThis) {
 }                                                 // #6
 ```
 
-## Setting Default Actions {#OnCall}
+## 1.3. Setting Default Actions {#OnCall}
 
 gMock has a **built-in default action** for any function that returns `void`,
 `bool`, a numeric value, or a pointer. In C++11, it will additionally returns
@@ -164,24 +164,24 @@ do not require that the mock method is called. See
 [Knowing When to Expect](gmock_cook_book.md#UseOnCall) for a more detailed
 discussion.
 
-## Setting Expectations {#ExpectCall}
+## 1.4. Setting Expectations {#ExpectCall}
 
 See [`EXPECT_CALL`](reference/mocking.md#EXPECT_CALL) in the Mocking Reference.
 
-## Matchers {#MatcherList}
+## 1.5. Matchers {#MatcherList}
 
 See the [Matchers Reference](reference/matchers.md).
 
-## Actions {#ActionList}
+## 1.6. Actions {#ActionList}
 
 See the [Actions Reference](reference/actions.md).
 
-## Cardinalities {#CardinalityList}
+## 1.7. Cardinalities {#CardinalityList}
 
 See the [`Times` clause](reference/mocking.md#EXPECT_CALL.Times) of
 `EXPECT_CALL` in the Mocking Reference.
 
-## Expectation Order
+## 1.8. Expectation Order
 
 By default, expectations can be matched in *any* order. If some or all
 expectations must be matched in a given order, you can use the
@@ -189,7 +189,7 @@ expectations must be matched in a given order, you can use the
 [`InSequence` clause](reference/mocking.md#EXPECT_CALL.InSequence) of
 `EXPECT_CALL`, or use an [`InSequence` object](reference/mocking.md#InSequence).
 
-## Verifying and Resetting a Mock
+## 1.9. Verifying and Resetting a Mock
 
 gMock will verify the expectations on a mock object when it is destructed, or
 you can do it earlier:
@@ -219,7 +219,7 @@ verified:
 Mock::AllowLeak(&mock_obj);
 ```
 
-## Mock Classes
+## 1.10. Mock Classes
 
 gMock defines a convenient mock class template
 
@@ -233,7 +233,7 @@ class MockFunction<R(A1, ..., An)> {
 See this [recipe](gmock_cook_book.md#using-check-points) for one application of
 it.
 
-## Flags
+## 1.11. Flags
 
 | Flag                           | Description                               |
 | :----------------------------- | :---------------------------------------- |

@@ -1,4 +1,4 @@
-# Assertions Reference
+# 1. Assertions Reference
 
 This page lists the assertion macros provided by GoogleTest for verifying code
 behavior. To use them, include the header `gtest/gtest.h`.
@@ -20,7 +20,7 @@ macro—in particular, C strings and string objects. If a wide string (`wchar_t*
 `TCHAR*` in `UNICODE` mode on Windows, or `std::wstring`) is streamed to an
 assertion, it will be translated to UTF-8 when printed.
 
-## Explicit Success and Failure {#success-failure}
+## 1.1. Explicit Success and Failure {#success-failure}
 
 The assertions in this section generate a success or failure directly instead of
 testing a value or expression. These are useful when control flow, rather than a
@@ -38,7 +38,7 @@ switch(expression) {
 }
 ```
 
-### SUCCEED {#SUCCEED}
+### 1.1.1. SUCCEED {#SUCCEED}
 
 `SUCCEED()`
 
@@ -49,7 +49,7 @@ The `SUCCEED` assertion is purely documentary and currently doesn't generate any
 user-visible output. However, we may add `SUCCEED` messages to GoogleTest output
 in the future.
 
-### FAIL {#FAIL}
+### 1.1.2. FAIL {#FAIL}
 
 `FAIL()`
 
@@ -58,25 +58,25 @@ Generates a fatal failure, which returns from the current function.
 Can only be used in functions that return `void`. See
 [Assertion Placement](../advanced.md#assertion-placement) for more information.
 
-### ADD_FAILURE {#ADD_FAILURE}
+### 1.1.3. ADD_FAILURE {#ADD_FAILURE}
 
 `ADD_FAILURE()`
 
 Generates a nonfatal failure, which allows the current function to continue
 running.
 
-### ADD_FAILURE_AT {#ADD_FAILURE_AT}
+### 1.1.4. ADD_FAILURE_AT {#ADD_FAILURE_AT}
 
 `ADD_FAILURE_AT(`*`file_path`*`,`*`line_number`*`)`
 
 Generates a nonfatal failure at the file and line number specified.
 
-## Generalized Assertion {#generalized}
+## 1.2. Generalized Assertion {#generalized}
 
 The following assertion allows [matchers](matchers.md) to be used to verify
 values.
 
-### EXPECT_THAT {#EXPECT_THAT}
+### 1.2.1. EXPECT_THAT {#EXPECT_THAT}
 
 `EXPECT_THAT(`*`value`*`,`*`matcher`*`)` \
 `ASSERT_THAT(`*`value`*`,`*`matcher`*`)`
@@ -120,25 +120,25 @@ The use of matchers makes `EXPECT_THAT` a powerful, extensible assertion.
 *The idea for this assertion was borrowed from Joe Walnes' Hamcrest project,
 which adds `assertThat()` to JUnit.*
 
-## Boolean Conditions {#boolean}
+## 1.3. Boolean Conditions {#boolean}
 
 The following assertions test Boolean conditions.
 
-### EXPECT_TRUE {#EXPECT_TRUE}
+### 1.3.1. EXPECT_TRUE {#EXPECT_TRUE}
 
 `EXPECT_TRUE(`*`condition`*`)` \
 `ASSERT_TRUE(`*`condition`*`)`
 
 Verifies that *`condition`* is true.
 
-### EXPECT_FALSE {#EXPECT_FALSE}
+### 1.3.2. EXPECT_FALSE {#EXPECT_FALSE}
 
 `EXPECT_FALSE(`*`condition`*`)` \
 `ASSERT_FALSE(`*`condition`*`)`
 
 Verifies that *`condition`* is false.
 
-## Binary Comparison {#binary-comparison}
+## 1.4. Binary Comparison {#binary-comparison}
 
 The following assertions compare two values. The value arguments must be
 comparable by the assertion's comparison operator, otherwise a compiler error
@@ -159,7 +159,7 @@ These assertions work with both narrow and wide string objects (`string` and
 See also the [Floating-Point Comparison](#floating-point) assertions to compare
 floating-point numbers and avoid problems caused by rounding.
 
-### EXPECT_EQ {#EXPECT_EQ}
+### 1.4.1. EXPECT_EQ {#EXPECT_EQ}
 
 `EXPECT_EQ(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_EQ(`*`val1`*`,`*`val2`*`)`
@@ -174,7 +174,7 @@ value.
 When comparing a pointer to `NULL`, use `EXPECT_EQ(`*`ptr`*`, nullptr)` instead
 of `EXPECT_EQ(`*`ptr`*`, NULL)`.
 
-### EXPECT_NE {#EXPECT_NE}
+### 1.4.2. EXPECT_NE {#EXPECT_NE}
 
 `EXPECT_NE(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_NE(`*`val1`*`,`*`val2`*`)`
@@ -189,35 +189,35 @@ value.
 When comparing a pointer to `NULL`, use `EXPECT_NE(`*`ptr`*`, nullptr)` instead
 of `EXPECT_NE(`*`ptr`*`, NULL)`.
 
-### EXPECT_LT {#EXPECT_LT}
+### 1.4.3. EXPECT_LT {#EXPECT_LT}
 
 `EXPECT_LT(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_LT(`*`val1`*`,`*`val2`*`)`
 
 Verifies that *`val1`*`<`*`val2`*.
 
-### EXPECT_LE {#EXPECT_LE}
+### 1.4.4. EXPECT_LE {#EXPECT_LE}
 
 `EXPECT_LE(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_LE(`*`val1`*`,`*`val2`*`)`
 
 Verifies that *`val1`*`<=`*`val2`*.
 
-### EXPECT_GT {#EXPECT_GT}
+### 1.4.5. EXPECT_GT {#EXPECT_GT}
 
 `EXPECT_GT(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_GT(`*`val1`*`,`*`val2`*`)`
 
 Verifies that *`val1`*`>`*`val2`*.
 
-### EXPECT_GE {#EXPECT_GE}
+### 1.4.6. EXPECT_GE {#EXPECT_GE}
 
 `EXPECT_GE(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_GE(`*`val1`*`,`*`val2`*`)`
 
 Verifies that *`val1`*`>=`*`val2`*.
 
-## String Comparison {#c-strings}
+## 1.5. String Comparison {#c-strings}
 
 The following assertions compare two **C strings**. To compare two `string`
 objects, use [`EXPECT_EQ`](#EXPECT_EQ) or [`EXPECT_NE`](#EXPECT_NE) instead.
@@ -228,21 +228,21 @@ wide strings fails, their values will be printed as UTF-8 narrow strings.
 To compare a C string with `NULL`, use `EXPECT_EQ(`*`c_string`*`, nullptr)` or
 `EXPECT_NE(`*`c_string`*`, nullptr)`.
 
-### EXPECT_STREQ {#EXPECT_STREQ}
+### 1.5.1. EXPECT_STREQ {#EXPECT_STREQ}
 
 `EXPECT_STREQ(`*`str1`*`,`*`str2`*`)` \
 `ASSERT_STREQ(`*`str1`*`,`*`str2`*`)`
 
 Verifies that the two C strings *`str1`* and *`str2`* have the same contents.
 
-### EXPECT_STRNE {#EXPECT_STRNE}
+### 1.5.2. EXPECT_STRNE {#EXPECT_STRNE}
 
 `EXPECT_STRNE(`*`str1`*`,`*`str2`*`)` \
 `ASSERT_STRNE(`*`str1`*`,`*`str2`*`)`
 
 Verifies that the two C strings *`str1`* and *`str2`* have different contents.
 
-### EXPECT_STRCASEEQ {#EXPECT_STRCASEEQ}
+### 1.5.3. EXPECT_STRCASEEQ {#EXPECT_STRCASEEQ}
 
 `EXPECT_STRCASEEQ(`*`str1`*`,`*`str2`*`)` \
 `ASSERT_STRCASEEQ(`*`str1`*`,`*`str2`*`)`
@@ -250,7 +250,7 @@ Verifies that the two C strings *`str1`* and *`str2`* have different contents.
 Verifies that the two C strings *`str1`* and *`str2`* have the same contents,
 ignoring case.
 
-### EXPECT_STRCASENE {#EXPECT_STRCASENE}
+### 1.5.4. EXPECT_STRCASENE {#EXPECT_STRCASENE}
 
 `EXPECT_STRCASENE(`*`str1`*`,`*`str2`*`)` \
 `ASSERT_STRCASENE(`*`str1`*`,`*`str2`*`)`
@@ -258,7 +258,7 @@ ignoring case.
 Verifies that the two C strings *`str1`* and *`str2`* have different contents,
 ignoring case.
 
-## Floating-Point Comparison {#floating-point}
+## 1.6. Floating-Point Comparison {#floating-point}
 
 The following assertions compare two floating-point values.
 
@@ -270,7 +270,7 @@ GoogleTest also provides assertions that use a default error bound based on
 Units in the Last Place (ULPs). To learn more about ULPs, see the article
 [Comparing Floating Point Numbers](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/).
 
-### EXPECT_FLOAT_EQ {#EXPECT_FLOAT_EQ}
+### 1.6.1. EXPECT_FLOAT_EQ {#EXPECT_FLOAT_EQ}
 
 `EXPECT_FLOAT_EQ(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_FLOAT_EQ(`*`val1`*`,`*`val2`*`)`
@@ -278,7 +278,7 @@ Units in the Last Place (ULPs). To learn more about ULPs, see the article
 Verifies that the two `float` values *`val1`* and *`val2`* are approximately
 equal, to within 4 ULPs from each other.
 
-### EXPECT_DOUBLE_EQ {#EXPECT_DOUBLE_EQ}
+### 1.6.2. EXPECT_DOUBLE_EQ {#EXPECT_DOUBLE_EQ}
 
 `EXPECT_DOUBLE_EQ(`*`val1`*`,`*`val2`*`)` \
 `ASSERT_DOUBLE_EQ(`*`val1`*`,`*`val2`*`)`
@@ -286,7 +286,7 @@ equal, to within 4 ULPs from each other.
 Verifies that the two `double` values *`val1`* and *`val2`* are approximately
 equal, to within 4 ULPs from each other.
 
-### EXPECT_NEAR {#EXPECT_NEAR}
+### 1.6.3. EXPECT_NEAR {#EXPECT_NEAR}
 
 `EXPECT_NEAR(`*`val1`*`,`*`val2`*`,`*`abs_error`*`)` \
 `ASSERT_NEAR(`*`val1`*`,`*`val2`*`,`*`abs_error`*`)`
@@ -294,7 +294,7 @@ equal, to within 4 ULPs from each other.
 Verifies that the difference between *`val1`* and *`val2`* does not exceed the
 absolute error bound *`abs_error`*.
 
-## Exception Assertions {#exceptions}
+## 1.7. Exception Assertions {#exceptions}
 
 The following assertions verify that a piece of code throws, or does not throw,
 an exception. Usage requires exceptions to be enabled in the build environment.
@@ -308,33 +308,33 @@ EXPECT_NO_THROW({
 });
 ```
 
-### EXPECT_THROW {#EXPECT_THROW}
+### 1.7.1. EXPECT_THROW {#EXPECT_THROW}
 
 `EXPECT_THROW(`*`statement`*`,`*`exception_type`*`)` \
 `ASSERT_THROW(`*`statement`*`,`*`exception_type`*`)`
 
 Verifies that *`statement`* throws an exception of type *`exception_type`*.
 
-### EXPECT_ANY_THROW {#EXPECT_ANY_THROW}
+### 1.7.2. EXPECT_ANY_THROW {#EXPECT_ANY_THROW}
 
 `EXPECT_ANY_THROW(`*`statement`*`)` \
 `ASSERT_ANY_THROW(`*`statement`*`)`
 
 Verifies that *`statement`* throws an exception of any type.
 
-### EXPECT_NO_THROW {#EXPECT_NO_THROW}
+### 1.7.3. EXPECT_NO_THROW {#EXPECT_NO_THROW}
 
 `EXPECT_NO_THROW(`*`statement`*`)` \
 `ASSERT_NO_THROW(`*`statement`*`)`
 
 Verifies that *`statement`* does not throw any exception.
 
-## Predicate Assertions {#predicates}
+## 1.8. Predicate Assertions {#predicates}
 
 The following assertions enable more complex predicates to be verified while
 printing a more clear failure message than if `EXPECT_TRUE` were used alone.
 
-### EXPECT_PRED* {#EXPECT_PRED}
+### 1.8.1. EXPECT_PRED* {#EXPECT_PRED}
 
 `EXPECT_PRED1(`*`pred`*`,`*`val1`*`)` \
 `EXPECT_PRED2(`*`pred`*`,`*`val1`*`,`*`val2`*`)` \
@@ -412,7 +412,7 @@ macro arguments are parsed correctly:
 ASSERT_PRED2((MyPredicate<int, int>), 5, 0);
 ```
 
-### EXPECT_PRED_FORMAT* {#EXPECT_PRED_FORMAT}
+### 1.8.2. EXPECT_PRED_FORMAT* {#EXPECT_PRED_FORMAT}
 
 `EXPECT_PRED_FORMAT1(`*`pred_formatter`*`,`*`val1`*`)` \
 `EXPECT_PRED_FORMAT2(`*`pred_formatter`*`,`*`val1`*`,`*`val2`*`)` \
@@ -491,7 +491,7 @@ produces the following failure message:
 b and c (4 and 10) are not mutually prime, as they have a common divisor 2
 ```
 
-## Windows HRESULT Assertions {#HRESULT}
+## 1.9. Windows HRESULT Assertions {#HRESULT}
 
 The following assertions test for `HRESULT` success or failure. For example:
 
@@ -505,21 +505,21 @@ ASSERT_HRESULT_SUCCEEDED(shell->ShellExecute(CComBSTR(url), empty, empty, empty,
 The generated output contains the human-readable error message associated with
 the returned `HRESULT` code.
 
-### EXPECT_HRESULT_SUCCEEDED {#EXPECT_HRESULT_SUCCEEDED}
+### 1.9.1. EXPECT_HRESULT_SUCCEEDED {#EXPECT_HRESULT_SUCCEEDED}
 
 `EXPECT_HRESULT_SUCCEEDED(`*`expression`*`)` \
 `ASSERT_HRESULT_SUCCEEDED(`*`expression`*`)`
 
 Verifies that *`expression`* is a success `HRESULT`.
 
-### EXPECT_HRESULT_FAILED {#EXPECT_HRESULT_FAILED}
+### 1.9.2. EXPECT_HRESULT_FAILED {#EXPECT_HRESULT_FAILED}
 
 `EXPECT_HRESULT_FAILED(`*`expression`*`)` \
 `EXPECT_HRESULT_FAILED(`*`expression`*`)`
 
 Verifies that *`expression`* is a failure `HRESULT`.
 
-## Death Assertions {#death}
+## 1.10. Death Assertions {#death}
 
 The following assertions verify that a piece of code causes the process to
 terminate. For context, see [Death Tests](../advanced.md#death-tests).
@@ -557,7 +557,7 @@ EXPECT_DEATH({
 }, "Error on line .* of DoSomething()");
 ```
 
-### EXPECT_DEATH {#EXPECT_DEATH}
+### 1.10.1. EXPECT_DEATH {#EXPECT_DEATH}
 
 `EXPECT_DEATH(`*`statement`*`,`*`matcher`*`)` \
 `ASSERT_DEATH(`*`statement`*`,`*`matcher`*`)`
@@ -579,7 +579,7 @@ the process to die with an error message that contains the text `My error`:
 EXPECT_DEATH(DoSomething(42), "My error");
 ```
 
-### EXPECT_DEATH_IF_SUPPORTED {#EXPECT_DEATH_IF_SUPPORTED}
+### 1.10.2. EXPECT_DEATH_IF_SUPPORTED {#EXPECT_DEATH_IF_SUPPORTED}
 
 `EXPECT_DEATH_IF_SUPPORTED(`*`statement`*`,`*`matcher`*`)` \
 `ASSERT_DEATH_IF_SUPPORTED(`*`statement`*`,`*`matcher`*`)`
@@ -587,7 +587,7 @@ EXPECT_DEATH(DoSomething(42), "My error");
 If death tests are supported, behaves the same as
 [`EXPECT_DEATH`](#EXPECT_DEATH). Otherwise, verifies nothing.
 
-### EXPECT_DEBUG_DEATH {#EXPECT_DEBUG_DEATH}
+### 1.10.3. EXPECT_DEBUG_DEATH {#EXPECT_DEBUG_DEATH}
 
 `EXPECT_DEBUG_DEATH(`*`statement`*`,`*`matcher`*`)` \
 `ASSERT_DEBUG_DEATH(`*`statement`*`,`*`matcher`*`)`
@@ -595,7 +595,7 @@ If death tests are supported, behaves the same as
 In debug mode, behaves the same as [`EXPECT_DEATH`](#EXPECT_DEATH). When not in
 debug mode (i.e. `NDEBUG` is defined), just executes *`statement`*.
 
-### EXPECT_EXIT {#EXPECT_EXIT}
+### 1.10.4. EXPECT_EXIT {#EXPECT_EXIT}
 
 `EXPECT_EXIT(`*`statement`*`,`*`predicate`*`,`*`matcher`*`)` \
 `ASSERT_EXIT(`*`statement`*`,`*`predicate`*`,`*`matcher`*`)`

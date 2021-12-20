@@ -1,10 +1,10 @@
-# Quickstart: Building with Bazel
+# 1. Quickstart: Building with Bazel
 
 This tutorial aims to get you up and running with GoogleTest using the Bazel
 build system. If you're using GoogleTest for the first time or need a refresher,
 we recommend this tutorial as a starting point.
 
-## Prerequisites
+## 1.1. Prerequisites
 
 To complete this tutorial, you'll need:
 
@@ -23,7 +23,7 @@ If you don't already have Bazel installed, see the
 Note: The terminal commands in this tutorial show a Unix shell prompt, but the
 commands work on the Windows command line as well.
 
-## Set up a Bazel workspace
+## 1.2. Set up a Bazel workspace
 
 A
 [Bazel workspace](https://docs.bazel.build/versions/master/build-ref.html#workspace)
@@ -76,7 +76,7 @@ http_archive(
 
 Now you're ready to build C++ code that uses GoogleTest.
 
-## Create and run a binary
+## 1.3. Create and run a binary
 
 With your Bazel workspace set up, you can now use GoogleTest code within your
 own project.
@@ -153,7 +153,7 @@ INFO: Build completed successfully, 27 total actions
 Congratulations! You've successfully built and run a test binary using
 GoogleTest.
 
-## Next steps
+## 1.4. Next steps
 
 *   [Check out the Primer](primer.md) to start learning how to write simple
     tests.

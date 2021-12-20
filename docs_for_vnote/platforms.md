@@ -1,4 +1,4 @@
-# Supported Platforms
+# 1. Supported Platforms
 
 GoogleTest requires a codebase and compiler compliant with the C++11 standard or
 newer.
@@ -12,13 +12,13 @@ If you notice any problems on your platform, please file an issue on the
 [GoogleTest GitHub Issue Tracker](https://github.com/google/googletest/issues).
 Pull requests containing fixes are welcome!
 
-### Operating systems
+### 1.1.1. Operating systems
 
 *   Linux
 *   macOS
 *   Windows
 
-### Compilers
+### 1.1.2. Compilers
 
 *   gcc 5.0+
 *   clang 5.0+
@@ -26,7 +26,7 @@ Pull requests containing fixes are welcome!
 
 **macOS users:** Xcode 9.3+ provides clang 5.0+.
 
-### Build systems
+### 1.1.3. Build systems
 
 *   [Bazel](https://bazel.build/)
 *   [CMake](https://cmake.org/)

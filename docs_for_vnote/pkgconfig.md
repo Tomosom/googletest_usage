@@ -1,4 +1,4 @@
-## Using GoogleTest from various build systems
+## 1. Using GoogleTest from various build systems
 
 GoogleTest comes with pkg-config files that can be used to determine all
 necessary flags for compiling and linking to GoogleTest (and GoogleMock).
@@ -14,7 +14,7 @@ All current build systems support pkg-config in one way or another. For all
 examples here we assume you want to compile the sample
 `samples/sample3_unittest.cc`.
 
-### CMake
+### 1.1. CMake
 
 Using `pkg-config` in CMake is fairly easy:
 
@@ -45,7 +45,7 @@ splitting the pkg-config `Cflags` variable into include dirs and macros for
 goes for using `_LDFLAGS` over the more commonplace `_LIBRARIES`, which happens
 to discard `-L` flags and `-pthread`.
 
-### Help! pkg-config can't find GoogleTest!
+### 1.2. Help! pkg-config can't find GoogleTest!
 
 Let's say you have a `CMakeLists.txt` along the lines of the one in this
 tutorial and you try to run `cmake`. It is very possible that you get a failure
@@ -69,7 +69,7 @@ export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
 
 pkg-config will also try to look in `PKG_CONFIG_PATH` to find `gtest_main.pc`.
 
-### Using pkg-config in a cross-compilation setting
+### 1.3. Using pkg-config in a cross-compilation setting
 
 Pkg-config can be used in a cross-compilation setting too. To do this, let's
 assume the final prefix of the cross-compiled installation will be `/usr`, and

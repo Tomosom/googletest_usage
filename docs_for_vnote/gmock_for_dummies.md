@@ -1,6 +1,6 @@
-# gMock for Dummies
+# 1. gMock for Dummies
 
-## What Is gMock?
+## 1.1. What Is gMock?
 
 When you write a prototype or test, often it's not feasible or wise to rely on
 real objects entirely. A **mock object** implements the same interface as a real
@@ -37,7 +37,7 @@ When using gMock,
 3.  then you exercise code that uses the mock objects. gMock will catch any
     violation to the expectations as soon as it arises.
 
-## Why gMock?
+## 1.2. Why gMock?
 
 While mock objects help you remove unnecessary dependencies in tests and make
 them fast and reliable, using mocks manually in C++ is *hard*:
@@ -83,11 +83,11 @@ We encourage you to use gMock as
 *   a *testing* tool to cut your tests' outbound dependencies and probe the
     interaction between your module and its collaborators.
 
-## Getting Started
+## 1.3. Getting Started
 
 gMock is bundled with googletest.
 
-## A Case for Mock Turtles
+## 1.4. A Case for Mock Turtles
 
 Let's look at an example. Suppose you are developing a graphics program that
 relies on a [LOGO](http://en.wikipedia.org/wiki/Logo_programming_language)-like
@@ -133,13 +133,13 @@ because your new machine does anti-aliasing differently), easier to read and
 maintain (the intent of a test is expressed in the code, not in some binary
 images), and run *much, much faster*.
 
-## Writing the Mock Class
+## 1.5. Writing the Mock Class
 
 If you are lucky, the mocks you need to use have already been implemented by
 some nice people. If, however, you find yourself in the position to write a mock
 class, relax - gMock turns this task into a fun game! (Well, almost.)
 
-### How to Define It
+### 1.5.1. How to Define It
 
 Using the `Turtle` interface as example, here are the simple steps you need to
 follow:
@@ -182,7 +182,7 @@ class MockTurtle : public Turtle {
 You don't need to define these mock methods somewhere else - the `MOCK_METHOD`
 macro will generate the definitions for you. It's that simple!
 
-### Where to Put It
+### 1.5.2. Where to Put It
 
 When you define a mock class, you need to decide where to put its definition.
 Some people put it in a `_test.cc`. This is fine when the interface being mocked
@@ -204,7 +204,7 @@ choosing the adaptor interface can make your code easier to write and more
 readable (a net win in the long run), as you can choose `FooAdaptor` to fit your
 specific domain much better than `Foo` does.
 
-## Using Mocks in Tests
+## 1.6. Using Mocks in Tests
 
 Once you have a mock class, using it is easy. The typical work flow is:
 
@@ -276,7 +276,7 @@ Admittedly, this test is contrived and doesn't do much. You can easily achieve
 the same effect without using gMock. However, as we shall reveal soon, gMock
 allows you to do *so much more* with the mocks.
 
-## Setting Expectations
+## 1.7. Setting Expectations
 
 The key to using a mock object successfully is to set the *right expectations*
 on it. If you set the expectations too strict, your test will fail as the result
@@ -285,7 +285,7 @@ to do it just right such that your test can catch exactly the kind of bugs you
 intend it to catch. gMock provides the necessary means for you to do it "just
 right."
 
-### General Syntax
+### 1.7.1. General Syntax
 
 In gMock we use the `EXPECT_CALL()` macro to set an expectation on a mock
 method. The general syntax is:
@@ -341,7 +341,7 @@ it makes expectations easily identifiable (either by `grep` or by a human
 reader), and second it allows gMock to include the source file location of a
 failed expectation in messages, making debugging easier.
 
-### Matchers: What Arguments Do We Expect?
+### 1.7.2. Matchers: What Arguments Do We Expect?
 
 When a mock function takes arguments, we may specify what arguments we are
 expecting, for example:
@@ -397,7 +397,7 @@ to help gMock resolve which overload is expected by specifying the number of
 arguments and possibly also the
 [types of the arguments](gmock_cook_book.md#SelectOverload).
 
-### Cardinalities: How Many Times Will It Be Called?
+### 1.7.3. Cardinalities: How Many Times Will It Be Called?
 
 The first clause we can specify following an `EXPECT_CALL()` is `Times()`. We
 call its argument a **cardinality** as it tells *how many times* the call should
@@ -427,7 +427,7 @@ the cardinality for you.** The rules are easy to remember:
 **Quick quiz:** what do you think will happen if a function is expected to be
 called twice but actually called four times?
 
-### Actions: What Should It Do?
+### 1.7.4. Actions: What Should It Do?
 
 Remember that a mock object doesn't really have a working implementation? We as
 users have to tell it what to do when a method is invoked. This is easy in
@@ -520,7 +520,7 @@ will be taken afterwards. So the right answer is that `turtle.GetY()` will
 return 100 the first time, but **return 0 from the second time on**, as
 returning 0 is the default action for `int` functions.
 
-### Using Multiple Expectations {#MultiExpectations}
+### 1.7.5. Using Multiple Expectations {#MultiExpectations}
 
 So far we've only shown examples where you have a single expectation. More
 realistically, you'll specify expectations on multiple mock methods which may be
@@ -563,7 +563,7 @@ useful for methods that have some expectations, but for which other calls are
 ok. See
 [Understanding Uninteresting vs Unexpected Calls](gmock_cook_book.md#uninteresting-vs-unexpected).
 
-### Ordered vs Unordered Calls {#OrderedCalls}
+### 1.7.6. Ordered vs Unordered Calls {#OrderedCalls}
 
 By default, an expectation can match a call even though an earlier expectation
 hasn't been satisfied. In other words, the calls don't have to occur in the
@@ -600,7 +600,7 @@ order as written. If a call is made out-of-order, it will be an error.
 them? Can you specify an arbitrary partial order? The answer is ... yes! The
 details can be found [here](gmock_cook_book.md#OrderedCalls).)
 
-### All Expectations Are Sticky (Unless Said Otherwise) {#StickyExpectations}
+### 1.7.7. All Expectations Are Sticky (Unless Said Otherwise) {#StickyExpectations}
 
 Now let's do a quick quiz to see how well you can use this mock stuff already.
 How would you test that the turtle is asked to go to the origin *exactly twice*
@@ -688,7 +688,7 @@ it's in a sequence - as soon as another expectation that comes after it in the
 sequence has been used, it automatically retires (and will never be used to
 match any call).
 
-### Uninteresting Calls
+### 1.7.8. Uninteresting Calls
 
 A mock object may have many methods, and not all of them are that interesting.
 For example, in some tests we may not care about how many times `GetX()` and

@@ -1,11 +1,11 @@
-# Quickstart: Building with CMake
+# 1. Quickstart: Building with CMake
 
 This tutorial aims to get you up and running with GoogleTest using CMake. If
 you're using GoogleTest for the first time or need a refresher, we recommend
 this tutorial as a starting point. If your project uses Bazel, see the
 [Quickstart for Bazel](quickstart-bazel.md) instead.
 
-## Prerequisites
+## 1.1. Prerequisites
 
 To complete this tutorial, you'll need:
 
@@ -29,7 +29,7 @@ If you don't already have CMake installed, see the
 Note: The terminal commands in this tutorial show a Unix shell prompt, but the
 commands work on the Windows command line as well.
 
-## Set up a project
+## 1.2. Set up a project
 
 CMake uses a file named `CMakeLists.txt` to configure the build system for a
 project. You'll use this file to set up your project and declare a dependency on
@@ -73,7 +73,7 @@ hash often to point to the latest version.
 For more information about how to create `CMakeLists.txt` files, see the
 [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
 
-## Create and run a binary
+## 1.3. Create and run a binary
 
 With GoogleTest declared as a dependency, you can use GoogleTest code within
 your own project.
@@ -148,7 +148,7 @@ Total Test time (real) =   0.01 sec
 Congratulations! You've successfully built and run a test binary using
 GoogleTest.
 
-## Next steps
+## 1.4. Next steps
 
 *   [Check out the Primer](primer.md) to start learning how to write simple
     tests.

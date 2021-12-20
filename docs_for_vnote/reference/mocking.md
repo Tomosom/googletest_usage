@@ -1,14 +1,14 @@
-# Mocking Reference
+# 1. Mocking Reference
 
 This page lists the facilities provided by GoogleTest for creating and working
 with mock objects. To use them, include the header
 `gmock/gmock.h`.
 
-## Macros {#macros}
+## 1.1. Macros {#macros}
 
 GoogleTest defines the following macros for working with mocks.
 
-### MOCK_METHOD {#MOCK_METHOD}
+### 1.1.1. MOCK_METHOD {#MOCK_METHOD}
 
 `MOCK_METHOD(`*`return_type`*`,`*`method_name`*`, (`*`args...`*`));` \
 `MOCK_METHOD(`*`return_type`*`,`*`method_name`*`, (`*`args...`*`),
@@ -56,7 +56,7 @@ class MyMock {
 regardless of whether the method being mocked is `public`, `protected`, or
 `private` in the base class.
 
-### EXPECT_CALL {#EXPECT_CALL}
+### 1.1.2. EXPECT_CALL {#EXPECT_CALL}
 
 `EXPECT_CALL(`*`mock_object`*`,`*`method_name`*`(`*`matchers...`*`))`
 
@@ -89,7 +89,7 @@ EXPECT_CALL(mock_object, method_name(matchers...))
 
 See details for each modifier clause below.
 
-#### With {#EXPECT_CALL.With}
+#### 1.1.2.1. With {#EXPECT_CALL.With}
 
 `.With(`*`multi_argument_matcher`*`)`
 
@@ -119,7 +119,7 @@ matcher above. See [Multi-argument Matchers](matchers.md#MultiArgMatchers).
 The `With` clause can be used at most once on an expectation and must be the
 first clause.
 
-#### Times {#EXPECT_CALL.Times}
+#### 1.1.2.2. Times {#EXPECT_CALL.Times}
 
 `.Times(`*`cardinality`*`)`
 
@@ -148,7 +148,7 @@ If the `Times` clause is omitted, GoogleTest infers the cardinality as follows:
 
 The `Times` clause can be used at most once on an expectation.
 
-#### InSequence {#EXPECT_CALL.InSequence}
+#### 1.1.2.3. InSequence {#EXPECT_CALL.InSequence}
 
 `.InSequence(`*`sequences...`*`)`
 
@@ -178,7 +178,7 @@ The `InSequence` clause can be used any number of times on an expectation.
 
 See also the [`InSequence` class](#InSequence).
 
-#### After {#EXPECT_CALL.After}
+#### 1.1.2.4. After {#EXPECT_CALL.After}
 
 `.After(`*`expectations...`*`)`
 
@@ -219,7 +219,7 @@ EXPECT_CALL(my_mock, Describe())
 
 The `After` clause can be used any number of times on an expectation.
 
-#### WillOnce {#EXPECT_CALL.WillOnce}
+#### 1.1.2.5. WillOnce {#EXPECT_CALL.WillOnce}
 
 `.WillOnce(`*`action`*`)`
 
@@ -250,7 +250,7 @@ EXPECT_CALL(my_mock, GetNumber())
 
 The `WillOnce` clause can be used any number of times on an expectation.
 
-#### WillRepeatedly {#EXPECT_CALL.WillRepeatedly}
+#### 1.1.2.6. WillRepeatedly {#EXPECT_CALL.WillRepeatedly}
 
 `.WillRepeatedly(`*`action`*`)`
 
@@ -283,7 +283,7 @@ EXPECT_CALL(my_mock, GetNumber())
 
 The `WillRepeatedly` clause can be used at most once on an expectation.
 
-#### RetiresOnSaturation {#EXPECT_CALL.RetiresOnSaturation}
+#### 1.1.2.7. RetiresOnSaturation {#EXPECT_CALL.RetiresOnSaturation}
 
 `.RetiresOnSaturation()`
 
@@ -316,7 +316,7 @@ was exceeded.
 The `RetiresOnSaturation` clause can be used at most once on an expectation and
 must be the last clause.
 
-### ON_CALL {#ON_CALL}
+### 1.1.3. ON_CALL {#ON_CALL}
 
 `ON_CALL(`*`mock_object`*`,`*`method_name`*`(`*`matchers...`*`))`
 
@@ -344,7 +344,7 @@ ON_CALL(mock_object, method_name(matchers...))
 
 See details for each modifier clause below.
 
-#### With {#ON_CALL.With}
+#### 1.1.3.1. With {#ON_CALL.With}
 
 `.With(`*`multi_argument_matcher`*`)`
 
@@ -375,7 +375,7 @@ matcher above. See [Multi-argument Matchers](matchers.md#MultiArgMatchers).
 
 The `With` clause can be used at most once with each `ON_CALL` statement.
 
-#### WillByDefault {#ON_CALL.WillByDefault}
+#### 1.1.3.2. WillByDefault {#ON_CALL.WillByDefault}
 
 `.WillByDefault(`*`action`*`)`
 
@@ -404,11 +404,11 @@ on a matching `EXPECT_CALL` statement, if any. See the
 The `WillByDefault` clause must be used exactly once with each `ON_CALL`
 statement.
 
-## Classes {#classes}
+## 1.2. Classes {#classes}
 
 GoogleTest defines the following classes for working with mocks.
 
-### DefaultValue {#DefaultValue}
+### 1.2.1. DefaultValue {#DefaultValue}
 
 `::testing::DefaultValue<T>`
 
@@ -432,7 +432,7 @@ DefaultValue<T>::SetFactory(&MakeT);
 DefaultValue<T>::Clear();
 ```
 
-### NiceMock {#NiceMock}
+### 1.2.2. NiceMock {#NiceMock}
 
 `::testing::NiceMock<T>`
 
@@ -463,7 +463,7 @@ class of `T`, a warning might still be generated.
 
 `NiceMock<T>` might not work correctly if the destructor of `T` is not virtual.
 
-### NaggyMock {#NaggyMock}
+### 1.2.3. NaggyMock {#NaggyMock}
 
 `::testing::NaggyMock<T>`
 
@@ -490,7 +490,7 @@ EXPECT_CALL(my_mock, DoSomething());
 
 Mock objects of type `T` by default behave the same way as `NaggyMock<T>`.
 
-### StrictMock {#StrictMock}
+### 1.2.4. StrictMock {#StrictMock}
 
 `::testing::StrictMock<T>`
 
@@ -522,14 +522,14 @@ base class of `T`, a failure might not be generated.
 `StrictMock<T>` might not work correctly if the destructor of `T` is not
 virtual.
 
-### Sequence {#Sequence}
+### 1.2.5. Sequence {#Sequence}
 
 `::testing::Sequence`
 
 Represents a chronological sequence of expectations. See the
 [`InSequence`](#EXPECT_CALL.InSequence) clause of `EXPECT_CALL` for usage.
 
-### InSequence {#InSequence}
+### 1.2.6. InSequence {#InSequence}
 
 `::testing::InSequence`
 
@@ -554,7 +554,7 @@ using ::testing::InSequence;
 
 The name of the `InSequence` object does not matter.
 
-### Expectation {#Expectation}
+### 1.2.7. Expectation {#Expectation}
 
 `::testing::Expectation`
 
@@ -569,7 +569,7 @@ Expectation my_expectation = EXPECT_CALL(...);
 Useful for specifying sequences of expectations; see the
 [`After`](#EXPECT_CALL.After) clause of `EXPECT_CALL`.
 
-### ExpectationSet {#ExpectationSet}
+### 1.2.8. ExpectationSet {#ExpectationSet}
 
 `::testing::ExpectationSet`
 

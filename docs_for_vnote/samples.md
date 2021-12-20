@@ -1,4 +1,4 @@
-# Googletest Samples
+# 1. Googletest Samples
 
 If you're like us, you'd like to look at
 [googletest samples.](https://github.com/google/googletest/tree/master/googletest/samples)

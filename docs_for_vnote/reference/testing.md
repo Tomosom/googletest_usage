@@ -1,15 +1,15 @@
-# Testing Reference
+# 1. Testing Reference
 
 <!--* toc_depth: 3 *-->
 
 This page lists the facilities provided by GoogleTest for writing test programs.
 To use them, include the header `gtest/gtest.h`.
 
-## Macros
+## 1.1. Macros
 
 GoogleTest defines the following macros for writing tests.
 
-### TEST {#TEST}
+### 1.1.1. TEST {#TEST}
 
 <pre>
 TEST(<em>TestSuiteName</em>, <em>TestName</em>) {
@@ -28,7 +28,7 @@ The statements within the test body can be any code under test.
 [Assertions](assertions.md) used within the test body determine the outcome of
 the test.
 
-### TEST_F {#TEST_F}
+### 1.1.2. TEST_F {#TEST_F}
 
 <pre>
 TEST_F(<em>TestFixtureName</em>, <em>TestName</em>) {
@@ -48,7 +48,7 @@ The statements within the test body can be any code under test.
 [Assertions](assertions.md) used within the test body determine the outcome of
 the test.
 
-### TEST_P {#TEST_P}
+### 1.1.3. TEST_P {#TEST_P}
 
 <pre>
 TEST_P(<em>TestFixtureName</em>, <em>TestName</em>) {
@@ -82,7 +82,7 @@ the test.
 
 See also [`INSTANTIATE_TEST_SUITE_P`](#INSTANTIATE_TEST_SUITE_P).
 
-### INSTANTIATE_TEST_SUITE_P {#INSTANTIATE_TEST_SUITE_P}
+### 1.1.4. INSTANTIATE_TEST_SUITE_P {#INSTANTIATE_TEST_SUITE_P}
 
 `INSTANTIATE_TEST_SUITE_P(`*`InstantiationName`*`,`*`TestSuiteName`*`,`*`param_generator`*`)`
 \
@@ -135,7 +135,7 @@ For more information, see
 See also
 [`GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST`](#GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST).
 
-### TYPED_TEST_SUITE {#TYPED_TEST_SUITE}
+### 1.1.5. TYPED_TEST_SUITE {#TYPED_TEST_SUITE}
 
 `TYPED_TEST_SUITE(`*`TestFixtureName`*`,`*`Types`*`)`
 
@@ -170,7 +170,7 @@ macro to parse correctly.
 See also [`TYPED_TEST`](#TYPED_TEST) and
 [Typed Tests](../advanced.md#typed-tests) for more information.
 
-### TYPED_TEST {#TYPED_TEST}
+### 1.1.6. TYPED_TEST {#TYPED_TEST}
 
 <pre>
 TYPED_TEST(<em>TestSuiteName</em>, <em>TestName</em>) {
@@ -207,7 +207,7 @@ TYPED_TEST(MyFixture, Example) {
 
 For more information, see [Typed Tests](../advanced.md#typed-tests).
 
-### TYPED_TEST_SUITE_P {#TYPED_TEST_SUITE_P}
+### 1.1.7. TYPED_TEST_SUITE_P {#TYPED_TEST_SUITE_P}
 
 `TYPED_TEST_SUITE_P(`*`TestFixtureName`*`)`
 
@@ -221,7 +221,7 @@ See also [`TYPED_TEST_P`](#TYPED_TEST_P) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
 information.
 
-### TYPED_TEST_P {#TYPED_TEST_P}
+### 1.1.8. TYPED_TEST_P {#TYPED_TEST_P}
 
 <pre>
 TYPED_TEST_P(<em>TestSuiteName</em>, <em>TestName</em>) {
@@ -241,7 +241,7 @@ See also [`REGISTER_TYPED_TEST_SUITE_P`](#REGISTER_TYPED_TEST_SUITE_P) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
 information.
 
-### REGISTER_TYPED_TEST_SUITE_P {#REGISTER_TYPED_TEST_SUITE_P}
+### 1.1.9. REGISTER_TYPED_TEST_SUITE_P {#REGISTER_TYPED_TEST_SUITE_P}
 
 `REGISTER_TYPED_TEST_SUITE_P(`*`TestSuiteName`*`,`*`TestNames...`*`)`
 
@@ -265,7 +265,7 @@ See also [`INSTANTIATE_TYPED_TEST_SUITE_P`](#INSTANTIATE_TYPED_TEST_SUITE_P) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
 information.
 
-### INSTANTIATE_TYPED_TEST_SUITE_P {#INSTANTIATE_TYPED_TEST_SUITE_P}
+### 1.1.10. INSTANTIATE_TYPED_TEST_SUITE_P {#INSTANTIATE_TYPED_TEST_SUITE_P}
 
 `INSTANTIATE_TYPED_TEST_SUITE_P(`*`InstantiationName`*`,`*`TestSuiteName`*`,`*`Types`*`)`
 
@@ -292,7 +292,7 @@ The type alias (`using` or `typedef`) is necessary for the
 For more information, see
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
 
-### FRIEND_TEST {#FRIEND_TEST}
+### 1.1.11. FRIEND_TEST {#FRIEND_TEST}
 
 `FRIEND_TEST(`*`TestSuiteName`*`,`*`TestName`*`)`
 
@@ -336,7 +336,7 @@ TEST_F(MyClassTest, HasPropertyB) { ... }
 See [Testing Private Code](../advanced.md#testing-private-code) for more
 information.
 
-### SCOPED_TRACE {#SCOPED_TRACE}
+### 1.1.12. SCOPED_TRACE {#SCOPED_TRACE}
 
 `SCOPED_TRACE(`*`message`*`)`
 
@@ -349,7 +349,7 @@ For more information, see
 
 See also the [`ScopedTrace` class](#ScopedTrace).
 
-### GTEST_SKIP {#GTEST_SKIP}
+### 1.1.13. GTEST_SKIP {#GTEST_SKIP}
 
 `GTEST_SKIP()`
 
@@ -367,7 +367,7 @@ Similar to assertions, `GTEST_SKIP` allows streaming a custom message into it.
 See [Skipping Test Execution](../advanced.md#skipping-test-execution) for more
 information.
 
-### GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST {#GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST}
+### 1.1.14. GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST {#GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST}
 
 `GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST(`*`TestSuiteName`*`)`
 
@@ -380,11 +380,11 @@ test in the test suite `GoogleTestVerification`.
 `GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST` suppresses this failure for the
 given test suite.
 
-## Classes and types
+## 1.2. Classes and types
 
 GoogleTest defines the following classes and types to help with writing tests.
 
-### AssertionResult {#AssertionResult}
+### 1.2.1. AssertionResult {#AssertionResult}
 
 `::testing::AssertionResult`
 
@@ -398,14 +398,14 @@ To create an instance of this class, use one of the factory functions
 [`AssertionSuccess()`](#AssertionSuccess) or
 [`AssertionFailure()`](#AssertionFailure).
 
-### AssertionException {#AssertionException}
+### 1.2.2. AssertionException {#AssertionException}
 
 `::testing::AssertionException`
 
 Exception which can be thrown from
 [`TestEventListener::OnTestPartResult`](#TestEventListener::OnTestPartResult).
 
-### EmptyTestEventListener {#EmptyTestEventListener}
+### 1.2.3. EmptyTestEventListener {#EmptyTestEventListener}
 
 `::testing::EmptyTestEventListener`
 
@@ -413,28 +413,28 @@ Provides an empty implementation of all methods in the
 [`TestEventListener`](#TestEventListener) interface, such that a subclass only
 needs to override the methods it cares about.
 
-### Environment {#Environment}
+### 1.2.4. Environment {#Environment}
 
 `::testing::Environment`
 
 Represents a global test environment. See
 [Global Set-Up and Tear-Down](../advanced.md#global-set-up-and-tear-down).
 
-#### Protected Methods {#Environment-protected}
+#### 1.2.4.1. Protected Methods {#Environment-protected}
 
-##### SetUp {#Environment::SetUp}
+##### 1.2.4.1.1. SetUp {#Environment::SetUp}
 
 `virtual void Environment::SetUp()`
 
 Override this to define how to set up the environment.
 
-##### TearDown {#Environment::TearDown}
+##### 1.2.4.1.2. TearDown {#Environment::TearDown}
 
 `virtual void Environment::TearDown()`
 
 Override this to define how to tear down the environment.
 
-### ScopedTrace {#ScopedTrace}
+### 1.2.5. ScopedTrace {#ScopedTrace}
 
 `::testing::ScopedTrace`
 
@@ -461,54 +461,54 @@ given message. The `message` argument can be anything streamable to
 
 See also [`SCOPED_TRACE`](#SCOPED_TRACE).
 
-### Test {#Test}
+### 1.2.6. Test {#Test}
 
 `::testing::Test`
 
 The abstract class that all tests inherit from. `Test` is not copyable.
 
-#### Public Methods {#Test-public}
+#### 1.2.6.1. Public Methods {#Test-public}
 
-##### SetUpTestSuite {#Test::SetUpTestSuite}
+##### 1.2.6.1.1. SetUpTestSuite {#Test::SetUpTestSuite}
 
 `static void Test::SetUpTestSuite()`
 
 Performs shared setup for all tests in the test suite. GoogleTest calls
 `SetUpTestSuite()` before running the first test in the test suite.
 
-##### TearDownTestSuite {#Test::TearDownTestSuite}
+##### 1.2.6.1.2. TearDownTestSuite {#Test::TearDownTestSuite}
 
 `static void Test::TearDownTestSuite()`
 
 Performs shared teardown for all tests in the test suite. GoogleTest calls
 `TearDownTestSuite()` after running the last test in the test suite.
 
-##### HasFatalFailure {#Test::HasFatalFailure}
+##### 1.2.6.1.3. HasFatalFailure {#Test::HasFatalFailure}
 
 `static bool Test::HasFatalFailure()`
 
 Returns true if and only if the current test has a fatal failure.
 
-##### HasNonfatalFailure {#Test::HasNonfatalFailure}
+##### 1.2.6.1.4. HasNonfatalFailure {#Test::HasNonfatalFailure}
 
 `static bool Test::HasNonfatalFailure()`
 
 Returns true if and only if the current test has a nonfatal failure.
 
-##### HasFailure {#Test::HasFailure}
+##### 1.2.6.1.5. HasFailure {#Test::HasFailure}
 
 `static bool Test::HasFailure()`
 
 Returns true if and only if the current test has any failure, either fatal or
 nonfatal.
 
-##### IsSkipped {#Test::IsSkipped}
+##### 1.2.6.1.6. IsSkipped {#Test::IsSkipped}
 
 `static bool Test::IsSkipped()`
 
 Returns true if and only if the current test was skipped.
 
-##### RecordProperty {#Test::RecordProperty}
+##### 1.2.6.1.7. RecordProperty {#Test::RecordProperty}
 
 `static void Test::RecordProperty(const std::string& key, const std::string&
 value)` \
@@ -533,42 +533,42 @@ global context (before or after invocation of `RUN_ALL_TESTS` or from the
 `SetUp`/`TearDown` methods of registered `Environment` objects) are output as
 attributes of the `<testsuites>` element.
 
-#### Protected Methods {#Test-protected}
+#### 1.2.6.2. Protected Methods {#Test-protected}
 
-##### SetUp {#Test::SetUp}
+##### 1.2.6.2.1. SetUp {#Test::SetUp}
 
 `virtual void Test::SetUp()`
 
 Override this to perform test fixture setup. GoogleTest calls `SetUp()` before
 running each individual test.
 
-##### TearDown {#Test::TearDown}
+##### 1.2.6.2.2. TearDown {#Test::TearDown}
 
 `virtual void Test::TearDown()`
 
 Override this to perform test fixture teardown. GoogleTest calls `TearDown()`
 after running each individual test.
 
-### TestWithParam {#TestWithParam}
+### 1.2.7. TestWithParam {#TestWithParam}
 
 `::testing::TestWithParam<T>`
 
 A convenience class which inherits from both [`Test`](#Test) and
 [`WithParamInterface<T>`](#WithParamInterface).
 
-### TestSuite {#TestSuite}
+### 1.2.8. TestSuite {#TestSuite}
 
 Represents a test suite. `TestSuite` is not copyable.
 
-#### Public Methods {#TestSuite-public}
+#### 1.2.8.1. Public Methods {#TestSuite-public}
 
-##### name {#TestSuite::name}
+##### 1.2.8.1.1. name {#TestSuite::name}
 
 `const char* TestSuite::name() const`
 
 Gets the name of the test suite.
 
-##### type_param {#TestSuite::type_param}
+##### 1.2.8.1.2. type_param {#TestSuite::type_param}
 
 `const char* TestSuite::type_param() const`
 
@@ -576,85 +576,85 @@ Returns the name of the parameter type, or `NULL` if this is not a typed or
 type-parameterized test suite. See [Typed Tests](../advanced.md#typed-tests) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
 
-##### should_run {#TestSuite::should_run}
+##### 1.2.8.1.3. should_run {#TestSuite::should_run}
 
 `bool TestSuite::should_run() const`
 
 Returns true if any test in this test suite should run.
 
-##### successful_test_count {#TestSuite::successful_test_count}
+##### 1.2.8.1.4. successful_test_count {#TestSuite::successful_test_count}
 
 `int TestSuite::successful_test_count() const`
 
 Gets the number of successful tests in this test suite.
 
-##### skipped_test_count {#TestSuite::skipped_test_count}
+##### 1.2.8.1.5. skipped_test_count {#TestSuite::skipped_test_count}
 
 `int TestSuite::skipped_test_count() const`
 
 Gets the number of skipped tests in this test suite.
 
-##### failed_test_count {#TestSuite::failed_test_count}
+##### 1.2.8.1.6. failed_test_count {#TestSuite::failed_test_count}
 
 `int TestSuite::failed_test_count() const`
 
 Gets the number of failed tests in this test suite.
 
-##### reportable_disabled_test_count {#TestSuite::reportable_disabled_test_count}
+##### 1.2.8.1.7. reportable_disabled_test_count {#TestSuite::reportable_disabled_test_count}
 
 `int TestSuite::reportable_disabled_test_count() const`
 
 Gets the number of disabled tests that will be reported in the XML report.
 
-##### disabled_test_count {#TestSuite::disabled_test_count}
+##### 1.2.8.1.8. disabled_test_count {#TestSuite::disabled_test_count}
 
 `int TestSuite::disabled_test_count() const`
 
 Gets the number of disabled tests in this test suite.
 
-##### reportable_test_count {#TestSuite::reportable_test_count}
+##### 1.2.8.1.9. reportable_test_count {#TestSuite::reportable_test_count}
 
 `int TestSuite::reportable_test_count() const`
 
 Gets the number of tests to be printed in the XML report.
 
-##### test_to_run_count {#TestSuite::test_to_run_count}
+##### 1.2.8.1.10. test_to_run_count {#TestSuite::test_to_run_count}
 
 `int TestSuite::test_to_run_count() const`
 
 Get the number of tests in this test suite that should run.
 
-##### total_test_count {#TestSuite::total_test_count}
+##### 1.2.8.1.11. total_test_count {#TestSuite::total_test_count}
 
 `int TestSuite::total_test_count() const`
 
 Gets the number of all tests in this test suite.
 
-##### Passed {#TestSuite::Passed}
+##### 1.2.8.1.12. Passed {#TestSuite::Passed}
 
 `bool TestSuite::Passed() const`
 
 Returns true if and only if the test suite passed.
 
-##### Failed {#TestSuite::Failed}
+##### 1.2.8.1.13. Failed {#TestSuite::Failed}
 
 `bool TestSuite::Failed() const`
 
 Returns true if and only if the test suite failed.
 
-##### elapsed_time {#TestSuite::elapsed_time}
+##### 1.2.8.1.14. elapsed_time {#TestSuite::elapsed_time}
 
 `TimeInMillis TestSuite::elapsed_time() const`
 
 Returns the elapsed time, in milliseconds.
 
-##### start_timestamp {#TestSuite::start_timestamp}
+##### 1.2.8.1.15. start_timestamp {#TestSuite::start_timestamp}
 
 `TimeInMillis TestSuite::start_timestamp() const`
 
 Gets the time of the test suite start, in ms from the start of the UNIX epoch.
 
-##### GetTestInfo {#TestSuite::GetTestInfo}
+##### 1.2.8.1.16. GetTestInfo {#TestSuite::GetTestInfo}
 
 `const TestInfo* TestSuite::GetTestInfo(int i) const`
 
@@ -662,34 +662,34 @@ Returns the [`TestInfo`](#TestInfo) for the `i`-th test among all the tests. `i`
 can range from 0 to `total_test_count() - 1`. If `i` is not in that range,
 returns `NULL`.
 
-##### ad_hoc_test_result {#TestSuite::ad_hoc_test_result}
+##### 1.2.8.1.17. ad_hoc_test_result {#TestSuite::ad_hoc_test_result}
 
 `const TestResult& TestSuite::ad_hoc_test_result() const`
 
 Returns the [`TestResult`](#TestResult) that holds test properties recorded
 during execution of `SetUpTestSuite` and `TearDownTestSuite`.
 
-### TestInfo {#TestInfo}
+### 1.2.9. TestInfo {#TestInfo}
 
 `::testing::TestInfo`
 
 Stores information about a test.
 
-#### Public Methods {#TestInfo-public}
+#### 1.2.9.1. Public Methods {#TestInfo-public}
 
-##### test_suite_name {#TestInfo::test_suite_name}
+##### 1.2.9.1.1. test_suite_name {#TestInfo::test_suite_name}
 
 `const char* TestInfo::test_suite_name() const`
 
 Returns the test suite name.
 
-##### name {#TestInfo::name}
+##### 1.2.9.1.2. name {#TestInfo::name}
 
 `const char* TestInfo::name() const`
 
 Returns the test name.
 
-##### type_param {#TestInfo::type_param}
+##### 1.2.9.1.3. type_param {#TestInfo::type_param}
 
 `const char* TestInfo::type_param() const`
 
@@ -697,7 +697,7 @@ Returns the name of the parameter type, or `NULL` if this is not a typed or
 type-parameterized test. See [Typed Tests](../advanced.md#typed-tests) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests).
 
-##### value_param {#TestInfo::value_param}
+##### 1.2.9.1.4. value_param {#TestInfo::value_param}
 
 `const char* TestInfo::value_param() const`
 
@@ -705,25 +705,25 @@ Returns the text representation of the value parameter, or `NULL` if this is not
 a value-parameterized test. See
 [Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
 
-##### file {#TestInfo::file}
+##### 1.2.9.1.5. file {#TestInfo::file}
 
 `const char* TestInfo::file() const`
 
 Returns the file name where this test is defined.
 
-##### line {#TestInfo::line}
+##### 1.2.9.1.6. line {#TestInfo::line}
 
 `int TestInfo::line() const`
 
 Returns the line where this test is defined.
 
-##### is_in_another_shard {#TestInfo::is_in_another_shard}
+##### 1.2.9.1.7. is_in_another_shard {#TestInfo::is_in_another_shard}
 
 `bool TestInfo::is_in_another_shard() const`
 
 Returns true if this test should not be run because it's in another shard.
 
-##### should_run {#TestInfo::should_run}
+##### 1.2.9.1.8. should_run {#TestInfo::should_run}
 
 `bool TestInfo::should_run() const`
 
@@ -736,19 +736,19 @@ tests that match the filter will run. See
 [Running a Subset of the Tests](../advanced.md#running-a-subset-of-the-tests)
 for more information.
 
-##### is_reportable {#TestInfo::is_reportable}
+##### 1.2.9.1.9. is_reportable {#TestInfo::is_reportable}
 
 `bool TestInfo::is_reportable() const`
 
 Returns true if and only if this test will appear in the XML report.
 
-##### result {#TestInfo::result}
+##### 1.2.9.1.10. result {#TestInfo::result}
 
 `const TestResult* TestInfo::result() const`
 
 Returns the result of the test. See [`TestResult`](#TestResult).
 
-### TestParamInfo {#TestParamInfo}
+### 1.2.10. TestParamInfo {#TestParamInfo}
 
 `::testing::TestParamInfo<T>`
 
@@ -758,7 +758,7 @@ the parameter.
 Contains the fields `param` and `index` which hold the value of the parameter
 and its integer index respectively.
 
-### UnitTest {#UnitTest}
+### 1.2.11. UnitTest {#UnitTest}
 
 `::testing::UnitTest`
 
@@ -769,9 +769,9 @@ This class contains information about the test program.
 
 `UnitTest` is not copyable.
 
-#### Public Methods {#UnitTest-public}
+#### 1.2.11.1. Public Methods {#UnitTest-public}
 
-##### GetInstance {#UnitTest::GetInstance}
+##### 1.2.11.1.1. GetInstance {#UnitTest::GetInstance}
 
 `static UnitTest* UnitTest::GetInstance()`
 
@@ -779,132 +779,132 @@ Gets the singleton `UnitTest` object. The first time this method is called, a
 `UnitTest` object is constructed and returned. Consecutive calls will return the
 same object.
 
-##### original_working_dir {#UnitTest::original_working_dir}
+##### 1.2.11.1.2. original_working_dir {#UnitTest::original_working_dir}
 
 `const char* UnitTest::original_working_dir() const`
 
 Returns the working directory when the first [`TEST()`](#TEST) or
 [`TEST_F()`](#TEST_F) was executed. The `UnitTest` object owns the string.
 
-##### current_test_suite {#UnitTest::current_test_suite}
+##### 1.2.11.1.3. current_test_suite {#UnitTest::current_test_suite}
 
 `const TestSuite* UnitTest::current_test_suite() const`
 
 Returns the [`TestSuite`](#TestSuite) object for the test that's currently
 running, or `NULL` if no test is running.
 
-##### current_test_info {#UnitTest::current_test_info}
+##### 1.2.11.1.4. current_test_info {#UnitTest::current_test_info}
 
 `const TestInfo* UnitTest::current_test_info() const`
 
 Returns the [`TestInfo`](#TestInfo) object for the test that's currently
 running, or `NULL` if no test is running.
 
-##### random_seed {#UnitTest::random_seed}
+##### 1.2.11.1.5. random_seed {#UnitTest::random_seed}
 
 `int UnitTest::random_seed() const`
 
 Returns the random seed used at the start of the current test run.
 
-##### successful_test_suite_count {#UnitTest::successful_test_suite_count}
+##### 1.2.11.1.6. successful_test_suite_count {#UnitTest::successful_test_suite_count}
 
 `int UnitTest::successful_test_suite_count() const`
 
 Gets the number of successful test suites.
 
-##### failed_test_suite_count {#UnitTest::failed_test_suite_count}
+##### 1.2.11.1.7. failed_test_suite_count {#UnitTest::failed_test_suite_count}
 
 `int UnitTest::failed_test_suite_count() const`
 
 Gets the number of failed test suites.
 
-##### total_test_suite_count {#UnitTest::total_test_suite_count}
+##### 1.2.11.1.8. total_test_suite_count {#UnitTest::total_test_suite_count}
 
 `int UnitTest::total_test_suite_count() const`
 
 Gets the number of all test suites.
 
-##### test_suite_to_run_count {#UnitTest::test_suite_to_run_count}
+##### 1.2.11.1.9. test_suite_to_run_count {#UnitTest::test_suite_to_run_count}
 
 `int UnitTest::test_suite_to_run_count() const`
 
 Gets the number of all test suites that contain at least one test that should
 run.
 
-##### successful_test_count {#UnitTest::successful_test_count}
+##### 1.2.11.1.10. successful_test_count {#UnitTest::successful_test_count}
 
 `int UnitTest::successful_test_count() const`
 
 Gets the number of successful tests.
 
-##### skipped_test_count {#UnitTest::skipped_test_count}
+##### 1.2.11.1.11. skipped_test_count {#UnitTest::skipped_test_count}
 
 `int UnitTest::skipped_test_count() const`
 
 Gets the number of skipped tests.
 
-##### failed_test_count {#UnitTest::failed_test_count}
+##### 1.2.11.1.12. failed_test_count {#UnitTest::failed_test_count}
 
 `int UnitTest::failed_test_count() const`
 
 Gets the number of failed tests.
 
-##### reportable_disabled_test_count {#UnitTest::reportable_disabled_test_count}
+##### 1.2.11.1.13. reportable_disabled_test_count {#UnitTest::reportable_disabled_test_count}
 
 `int UnitTest::reportable_disabled_test_count() const`
 
 Gets the number of disabled tests that will be reported in the XML report.
 
-##### disabled_test_count {#UnitTest::disabled_test_count}
+##### 1.2.11.1.14. disabled_test_count {#UnitTest::disabled_test_count}
 
 `int UnitTest::disabled_test_count() const`
 
 Gets the number of disabled tests.
 
-##### reportable_test_count {#UnitTest::reportable_test_count}
+##### 1.2.11.1.15. reportable_test_count {#UnitTest::reportable_test_count}
 
 `int UnitTest::reportable_test_count() const`
 
 Gets the number of tests to be printed in the XML report.
 
-##### total_test_count {#UnitTest::total_test_count}
+##### 1.2.11.1.16. total_test_count {#UnitTest::total_test_count}
 
 `int UnitTest::total_test_count() const`
 
 Gets the number of all tests.
 
-##### test_to_run_count {#UnitTest::test_to_run_count}
+##### 1.2.11.1.17. test_to_run_count {#UnitTest::test_to_run_count}
 
 `int UnitTest::test_to_run_count() const`
 
 Gets the number of tests that should run.
 
-##### start_timestamp {#UnitTest::start_timestamp}
+##### 1.2.11.1.18. start_timestamp {#UnitTest::start_timestamp}
 
 `TimeInMillis UnitTest::start_timestamp() const`
 
 Gets the time of the test program start, in ms from the start of the UNIX epoch.
 
-##### elapsed_time {#UnitTest::elapsed_time}
+##### 1.2.11.1.19. elapsed_time {#UnitTest::elapsed_time}
 
 `TimeInMillis UnitTest::elapsed_time() const`
 
 Gets the elapsed time, in milliseconds.
 
-##### Passed {#UnitTest::Passed}
+##### 1.2.11.1.20. Passed {#UnitTest::Passed}
 
 `bool UnitTest::Passed() const`
 
 Returns true if and only if the unit test passed (i.e. all test suites passed).
 
-##### Failed {#UnitTest::Failed}
+##### 1.2.11.1.21. Failed {#UnitTest::Failed}
 
 `bool UnitTest::Failed() const`
 
 Returns true if and only if the unit test failed (i.e. some test suite failed or
 something outside of all tests failed).
 
-##### GetTestSuite {#UnitTest::GetTestSuite}
+##### 1.2.11.1.22. GetTestSuite {#UnitTest::GetTestSuite}
 
 `const TestSuite* UnitTest::GetTestSuite(int i) const`
 
@@ -912,36 +912,36 @@ Gets the [`TestSuite`](#TestSuite) object for the `i`-th test suite among all
 the test suites. `i` can range from 0 to `total_test_suite_count() - 1`. If `i`
 is not in that range, returns `NULL`.
 
-##### ad_hoc_test_result {#UnitTest::ad_hoc_test_result}
+##### 1.2.11.1.23. ad_hoc_test_result {#UnitTest::ad_hoc_test_result}
 
 `const TestResult& UnitTest::ad_hoc_test_result() const`
 
 Returns the [`TestResult`](#TestResult) containing information on test failures
 and properties logged outside of individual test suites.
 
-##### listeners {#UnitTest::listeners}
+##### 1.2.11.1.24. listeners {#UnitTest::listeners}
 
 `TestEventListeners& UnitTest::listeners()`
 
 Returns the list of event listeners that can be used to track events inside
 GoogleTest. See [`TestEventListeners`](#TestEventListeners).
 
-### TestEventListener {#TestEventListener}
+### 1.2.12. TestEventListener {#TestEventListener}
 
 `::testing::TestEventListener`
 
 The interface for tracing execution of tests. The methods below are listed in
 the order the corresponding events are fired.
 
-#### Public Methods {#TestEventListener-public}
+#### 1.2.12.1. Public Methods {#TestEventListener-public}
 
-##### OnTestProgramStart {#TestEventListener::OnTestProgramStart}
+##### 1.2.12.1.1. OnTestProgramStart {#TestEventListener::OnTestProgramStart}
 
 `virtual void TestEventListener::OnTestProgramStart(const UnitTest& unit_test)`
 
 Fired before any test activity starts.
 
-##### OnTestIterationStart {#TestEventListener::OnTestIterationStart}
+##### 1.2.12.1.2. OnTestIterationStart {#TestEventListener::OnTestIterationStart}
 
 `virtual void TestEventListener::OnTestIterationStart(const UnitTest& unit_test,
 int iteration)`
@@ -950,33 +950,33 @@ Fired before each iteration of tests starts. There may be more than one
 iteration if `GTEST_FLAG(repeat)` is set. `iteration` is the iteration index,
 starting from 0.
 
-##### OnEnvironmentsSetUpStart {#TestEventListener::OnEnvironmentsSetUpStart}
+##### 1.2.12.1.3. OnEnvironmentsSetUpStart {#TestEventListener::OnEnvironmentsSetUpStart}
 
 `virtual void TestEventListener::OnEnvironmentsSetUpStart(const UnitTest&
 unit_test)`
 
 Fired before environment set-up for each iteration of tests starts.
 
-##### OnEnvironmentsSetUpEnd {#TestEventListener::OnEnvironmentsSetUpEnd}
+##### 1.2.12.1.4. OnEnvironmentsSetUpEnd {#TestEventListener::OnEnvironmentsSetUpEnd}
 
 `virtual void TestEventListener::OnEnvironmentsSetUpEnd(const UnitTest&
 unit_test)`
 
 Fired after environment set-up for each iteration of tests ends.
 
-##### OnTestSuiteStart {#TestEventListener::OnTestSuiteStart}
+##### 1.2.12.1.5. OnTestSuiteStart {#TestEventListener::OnTestSuiteStart}
 
 `virtual void TestEventListener::OnTestSuiteStart(const TestSuite& test_suite)`
 
 Fired before the test suite starts.
 
-##### OnTestStart {#TestEventListener::OnTestStart}
+##### 1.2.12.1.6. OnTestStart {#TestEventListener::OnTestStart}
 
 `virtual void TestEventListener::OnTestStart(const TestInfo& test_info)`
 
 Fired before the test starts.
 
-##### OnTestPartResult {#TestEventListener::OnTestPartResult}
+##### 1.2.12.1.7. OnTestPartResult {#TestEventListener::OnTestPartResult}
 
 `virtual void TestEventListener::OnTestPartResult(const TestPartResult&
 test_part_result)`
@@ -985,54 +985,54 @@ Fired after a failed assertion or a `SUCCEED()` invocation. If you want to throw
 an exception from this function to skip to the next test, it must be an
 [`AssertionException`](#AssertionException) or inherited from it.
 
-##### OnTestEnd {#TestEventListener::OnTestEnd}
+##### 1.2.12.1.8. OnTestEnd {#TestEventListener::OnTestEnd}
 
 `virtual void TestEventListener::OnTestEnd(const TestInfo& test_info)`
 
 Fired after the test ends.
 
-##### OnTestSuiteEnd {#TestEventListener::OnTestSuiteEnd}
+##### 1.2.12.1.9. OnTestSuiteEnd {#TestEventListener::OnTestSuiteEnd}
 
 `virtual void TestEventListener::OnTestSuiteEnd(const TestSuite& test_suite)`
 
 Fired after the test suite ends.
 
-##### OnEnvironmentsTearDownStart {#TestEventListener::OnEnvironmentsTearDownStart}
+##### 1.2.12.1.10. OnEnvironmentsTearDownStart {#TestEventListener::OnEnvironmentsTearDownStart}
 
 `virtual void TestEventListener::OnEnvironmentsTearDownStart(const UnitTest&
 unit_test)`
 
 Fired before environment tear-down for each iteration of tests starts.
 
-##### OnEnvironmentsTearDownEnd {#TestEventListener::OnEnvironmentsTearDownEnd}
+##### 1.2.12.1.11. OnEnvironmentsTearDownEnd {#TestEventListener::OnEnvironmentsTearDownEnd}
 
 `virtual void TestEventListener::OnEnvironmentsTearDownEnd(const UnitTest&
 unit_test)`
 
 Fired after environment tear-down for each iteration of tests ends.
 
-##### OnTestIterationEnd {#TestEventListener::OnTestIterationEnd}
+##### 1.2.12.1.12. OnTestIterationEnd {#TestEventListener::OnTestIterationEnd}
 
 `virtual void TestEventListener::OnTestIterationEnd(const UnitTest& unit_test,
 int iteration)`
 
 Fired after each iteration of tests finishes.
 
-##### OnTestProgramEnd {#TestEventListener::OnTestProgramEnd}
+##### 1.2.12.1.13. OnTestProgramEnd {#TestEventListener::OnTestProgramEnd}
 
 `virtual void TestEventListener::OnTestProgramEnd(const UnitTest& unit_test)`
 
 Fired after all test activities have ended.
 
-### TestEventListeners {#TestEventListeners}
+### 1.2.13. TestEventListeners {#TestEventListeners}
 
 `::testing::TestEventListeners`
 
 Lets users add listeners to track events in GoogleTest.
 
-#### Public Methods {#TestEventListeners-public}
+#### 1.2.13.1. Public Methods {#TestEventListeners-public}
 
-##### Append {#TestEventListeners::Append}
+##### 1.2.13.1.1. Append {#TestEventListeners::Append}
 
 `void TestEventListeners::Append(TestEventListener* listener)`
 
@@ -1040,7 +1040,7 @@ Appends an event listener to the end of the list. GoogleTest assumes ownership
 of the listener (i.e. it will delete the listener when the test program
 finishes).
 
-##### Release {#TestEventListeners::Release}
+##### 1.2.13.1.2. Release {#TestEventListeners::Release}
 
 `TestEventListener* TestEventListeners::Release(TestEventListener* listener)`
 
@@ -1048,7 +1048,7 @@ Removes the given event listener from the list and returns it. It then becomes
 the caller's responsibility to delete the listener. Returns `NULL` if the
 listener is not found in the list.
 
-##### default_result_printer {#TestEventListeners::default_result_printer}
+##### 1.2.13.1.3. default_result_printer {#TestEventListeners::default_result_printer}
 
 `TestEventListener* TestEventListeners::default_result_printer() const`
 
@@ -1058,7 +1058,7 @@ removing this object from the listener list with
 [`Release()`](#TestEventListeners::Release) transfers its ownership to the
 caller and makes this function return `NULL` the next time.
 
-##### default_xml_generator {#TestEventListeners::default_xml_generator}
+##### 1.2.13.1.4. default_xml_generator {#TestEventListeners::default_xml_generator}
 
 `TestEventListener* TestEventListeners::default_xml_generator() const`
 
@@ -1069,16 +1069,16 @@ substitute it with custom one. Note that removing this object from the listener
 list with [`Release()`](#TestEventListeners::Release) transfers its ownership to
 the caller and makes this function return `NULL` the next time.
 
-### TestPartResult {#TestPartResult}
+### 1.2.14. TestPartResult {#TestPartResult}
 
 `::testing::TestPartResult`
 
 A copyable object representing the result of a test part (i.e. an assertion or
 an explicit `FAIL()`, `ADD_FAILURE()`, or `SUCCESS()`).
 
-#### Public Methods {#TestPartResult-public}
+#### 1.2.14.1. Public Methods {#TestPartResult-public}
 
-##### type {#TestPartResult::type}
+##### 1.2.14.1.1. type {#TestPartResult::type}
 
 `Type TestPartResult::type() const`
 
@@ -1095,90 +1095,90 @@ enum Type {
 };
 ```
 
-##### file_name {#TestPartResult::file_name}
+##### 1.2.14.1.2. file_name {#TestPartResult::file_name}
 
 `const char* TestPartResult::file_name() const`
 
 Gets the name of the source file where the test part took place, or `NULL` if
 it's unknown.
 
-##### line_number {#TestPartResult::line_number}
+##### 1.2.14.1.3. line_number {#TestPartResult::line_number}
 
 `int TestPartResult::line_number() const`
 
 Gets the line in the source file where the test part took place, or `-1` if it's
 unknown.
 
-##### summary {#TestPartResult::summary}
+##### 1.2.14.1.4. summary {#TestPartResult::summary}
 
 `const char* TestPartResult::summary() const`
 
 Gets the summary of the failure message.
 
-##### message {#TestPartResult::message}
+##### 1.2.14.1.5. message {#TestPartResult::message}
 
 `const char* TestPartResult::message() const`
 
 Gets the message associated with the test part.
 
-##### skipped {#TestPartResult::skipped}
+##### 1.2.14.1.6. skipped {#TestPartResult::skipped}
 
 `bool TestPartResult::skipped() const`
 
 Returns true if and only if the test part was skipped.
 
-##### passed {#TestPartResult::passed}
+##### 1.2.14.1.7. passed {#TestPartResult::passed}
 
 `bool TestPartResult::passed() const`
 
 Returns true if and only if the test part passed.
 
-##### nonfatally_failed {#TestPartResult::nonfatally_failed}
+##### 1.2.14.1.8. nonfatally_failed {#TestPartResult::nonfatally_failed}
 
 `bool TestPartResult::nonfatally_failed() const`
 
 Returns true if and only if the test part non-fatally failed.
 
-##### fatally_failed {#TestPartResult::fatally_failed}
+##### 1.2.14.1.9. fatally_failed {#TestPartResult::fatally_failed}
 
 `bool TestPartResult::fatally_failed() const`
 
 Returns true if and only if the test part fatally failed.
 
-##### failed {#TestPartResult::failed}
+##### 1.2.14.1.10. failed {#TestPartResult::failed}
 
 `bool TestPartResult::failed() const`
 
 Returns true if and only if the test part failed.
 
-### TestProperty {#TestProperty}
+### 1.2.15. TestProperty {#TestProperty}
 
 `::testing::TestProperty`
 
 A copyable object representing a user-specified test property which can be
 output as a key/value string pair.
 
-#### Public Methods {#TestProperty-public}
+#### 1.2.15.1. Public Methods {#TestProperty-public}
 
-##### key {#key}
+##### 1.2.15.1.1. key {#key}
 
 `const char* key() const`
 
 Gets the user-supplied key.
 
-##### value {#value}
+##### 1.2.15.1.2. value {#value}
 
 `const char* value() const`
 
 Gets the user-supplied value.
 
-##### SetValue {#SetValue}
+##### 1.2.15.1.3. SetValue {#SetValue}
 
 `void SetValue(const std::string& new_value)`
 
 Sets a new value, overriding the previous one.
 
-### TestResult {#TestResult}
+### 1.2.16. TestResult {#TestResult}
 
 `::testing::TestResult`
 
@@ -1186,64 +1186,64 @@ Contains information about the result of a single test.
 
 `TestResult` is not copyable.
 
-#### Public Methods {#TestResult-public}
+#### 1.2.16.1. Public Methods {#TestResult-public}
 
-##### total_part_count {#TestResult::total_part_count}
+##### 1.2.16.1.1. total_part_count {#TestResult::total_part_count}
 
 `int TestResult::total_part_count() const`
 
 Gets the number of all test parts. This is the sum of the number of successful
 test parts and the number of failed test parts.
 
-##### test_property_count {#TestResult::test_property_count}
+##### 1.2.16.1.2. test_property_count {#TestResult::test_property_count}
 
 `int TestResult::test_property_count() const`
 
 Returns the number of test properties.
 
-##### Passed {#TestResult::Passed}
+##### 1.2.16.1.3. Passed {#TestResult::Passed}
 
 `bool TestResult::Passed() const`
 
 Returns true if and only if the test passed (i.e. no test part failed).
 
-##### Skipped {#TestResult::Skipped}
+##### 1.2.16.1.4. Skipped {#TestResult::Skipped}
 
 `bool TestResult::Skipped() const`
 
 Returns true if and only if the test was skipped.
 
-##### Failed {#TestResult::Failed}
+##### 1.2.16.1.5. Failed {#TestResult::Failed}
 
 `bool TestResult::Failed() const`
 
 Returns true if and only if the test failed.
 
-##### HasFatalFailure {#TestResult::HasFatalFailure}
+##### 1.2.16.1.6. HasFatalFailure {#TestResult::HasFatalFailure}
 
 `bool TestResult::HasFatalFailure() const`
 
 Returns true if and only if the test fatally failed.
 
-##### HasNonfatalFailure {#TestResult::HasNonfatalFailure}
+##### 1.2.16.1.7. HasNonfatalFailure {#TestResult::HasNonfatalFailure}
 
 `bool TestResult::HasNonfatalFailure() const`
 
 Returns true if and only if the test has a non-fatal failure.
 
-##### elapsed_time {#TestResult::elapsed_time}
+##### 1.2.16.1.8. elapsed_time {#TestResult::elapsed_time}
 
 `TimeInMillis TestResult::elapsed_time() const`
 
 Returns the elapsed time, in milliseconds.
 
-##### start_timestamp {#TestResult::start_timestamp}
+##### 1.2.16.1.9. start_timestamp {#TestResult::start_timestamp}
 
 `TimeInMillis TestResult::start_timestamp() const`
 
 Gets the time of the test case start, in ms from the start of the UNIX epoch.
 
-##### GetTestPartResult {#TestResult::GetTestPartResult}
+##### 1.2.16.1.10. GetTestPartResult {#TestResult::GetTestPartResult}
 
 `const TestPartResult& TestResult::GetTestPartResult(int i) const`
 
@@ -1251,7 +1251,7 @@ Returns the [`TestPartResult`](#TestPartResult) for the `i`-th test part result
 among all the results. `i` can range from 0 to `total_part_count() - 1`. If `i`
 is not in that range, aborts the program.
 
-##### GetTestProperty {#TestResult::GetTestProperty}
+##### 1.2.16.1.11. GetTestProperty {#TestResult::GetTestProperty}
 
 `const TestProperty& TestResult::GetTestProperty(int i) const`
 
@@ -1259,13 +1259,13 @@ Returns the [`TestProperty`](#TestProperty) object for the `i`-th test property.
 `i` can range from 0 to `test_property_count() - 1`. If `i` is not in that
 range, aborts the program.
 
-### TimeInMillis {#TimeInMillis}
+### 1.2.17. TimeInMillis {#TimeInMillis}
 
 `::testing::TimeInMillis`
 
 An integer type representing time in milliseconds.
 
-### Types {#Types}
+### 1.2.18. Types {#Types}
 
 `::testing::Types<T...>`
 
@@ -1281,7 +1281,7 @@ See [Typed Tests](../advanced.md#typed-tests) and
 [Type-Parameterized Tests](../advanced.md#type-parameterized-tests) for more
 information.
 
-### WithParamInterface {#WithParamInterface}
+### 1.2.19. WithParamInterface {#WithParamInterface}
 
 `::testing::WithParamInterface<T>`
 
@@ -1302,12 +1302,12 @@ static const ParamType& GetParam()
 For more information, see
 [Value-Parameterized Tests](../advanced.md#value-parameterized-tests).
 
-## Functions
+## 1.3. Functions
 
 GoogleTest defines the following functions to help with writing and running
 tests.
 
-### InitGoogleTest {#InitGoogleTest}
+### 1.3.1. InitGoogleTest {#InitGoogleTest}
 
 `void ::testing::InitGoogleTest(int* argc, char** argv)` \
 `void ::testing::InitGoogleTest(int* argc, wchar_t** argv)` \
@@ -1326,7 +1326,7 @@ programs compiled in `UNICODE` mode.
 The argument-less `InitGoogleTest()` overload can be used on Arduino/embedded
 platforms where there is no `argc`/`argv`.
 
-### AddGlobalTestEnvironment {#AddGlobalTestEnvironment}
+### 1.3.2. AddGlobalTestEnvironment {#AddGlobalTestEnvironment}
 
 `Environment* ::testing::AddGlobalTestEnvironment(Environment* env)`
 
@@ -1337,7 +1337,7 @@ more information.
 
 See also [`Environment`](#Environment).
 
-### RegisterTest {#RegisterTest}
+### 1.3.3. RegisterTest {#RegisterTest}
 
 ```cpp
 template <typename Factory>
@@ -1365,7 +1365,7 @@ See
 [Registering tests programmatically](../advanced.md#registering-tests-programmatically)
 for more information.
 
-### RUN_ALL_TESTS {#RUN_ALL_TESTS}
+### 1.3.4. RUN_ALL_TESTS {#RUN_ALL_TESTS}
 
 `int RUN_ALL_TESTS()`
 
@@ -1378,14 +1378,14 @@ successful, or `1` otherwise.
 This function was formerly a macro; thus, it is in the global namespace and has
 an all-caps name.
 
-### AssertionSuccess {#AssertionSuccess}
+### 1.3.5. AssertionSuccess {#AssertionSuccess}
 
 `AssertionResult ::testing::AssertionSuccess()`
 
 Creates a successful assertion result. See
 [`AssertionResult`](#AssertionResult).
 
-### AssertionFailure {#AssertionFailure}
+### 1.3.6. AssertionFailure {#AssertionFailure}
 
 `AssertionResult ::testing::AssertionFailure()`
 
@@ -1398,7 +1398,7 @@ message:
 
 See [`AssertionResult`](#AssertionResult).
 
-### StaticAssertTypeEq {#StaticAssertTypeEq}
+### 1.3.7. StaticAssertTypeEq {#StaticAssertTypeEq}
 
 `::testing::StaticAssertTypeEq<T1, T2>()`
 
@@ -1407,7 +1407,7 @@ are the same type. The value it returns is irrelevant.
 
 See [Type Assertions](../advanced.md#type-assertions) for more information.
 
-### PrintToString {#PrintToString}
+### 1.3.8. PrintToString {#PrintToString}
 
 `std::string ::testing::PrintToString(x)`
 
@@ -1417,7 +1417,7 @@ See
 [Teaching GoogleTest How to Print Your Values](../advanced.md#teaching-googletest-how-to-print-your-values)
 for more information.
 
-### PrintToStringParamName {#PrintToStringParamName}
+### 1.3.9. PrintToStringParamName {#PrintToStringParamName}
 
 `std::string ::testing::PrintToStringParamName(TestParamInfo<T>& info)`
 
