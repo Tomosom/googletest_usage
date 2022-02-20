@@ -1,21 +1,11 @@
 {
-    "created_time": "2021-12-19T14:21:56Z",
+    "created_time": "2022-02-20T16:36:55Z",
     "files": [
-        {
-            "attachment_folder": "",
-            "created_time": "2021-12-19T14:21:56Z",
-            "id": "12",
-            "modified_time": "2021-12-19T14:21:56Z",
-            "name": "style.scss",
-            "signature": "73166407811076",
-            "tags": [
-            ]
-        }
     ],
     "folders": [
     ],
-    "id": "11",
-    "modified_time": "2021-12-19T14:21:56Z",
-    "signature": "112954984841220",
+    "id": "8",
+    "modified_time": "2022-02-20T16:36:55Z",
+    "signature": "126093295250983",
     "version": 3
 }

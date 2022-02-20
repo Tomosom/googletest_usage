@@ -1,14 +1,14 @@
 {
     "attachment_folder": "vx_attachments",
     "config_mgr": "vx.vnotex",
-    "created_time": "2021-12-19T14:21:56Z",
+    "created_time": "2022-02-20T16:36:55Z",
     "description": "",
     "extra_configs": {
     },
     "history": [
     ],
     "image_folder": "vx_images",
-    "name": "docs_for_vnote",
+    "name": "googletest_note",
     "tag_graph": "",
     "version": 3,
     "version_controller": "dummy.vnotex"
