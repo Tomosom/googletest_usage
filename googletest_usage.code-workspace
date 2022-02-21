@@ -7,14 +7,17 @@
 	"settings": {
 		"files.exclude": {
 			"**/.git": true,
-			"**/.o": true,
-			"**/.a": true,
+			"**/*.o": true,
+			"**/*.a": true,
 			"**/*.exe": true,
 
 			"googletest-release-1.11.0/.github":true,
 			"googletest-release-1.11.0/ci":true,
 			"googletest-release-1.11.0/docs":true,
 			"1_googletest_note":true
+		},
+		"files.associations": {
+			"iostream": "cpp"
 		}
 	}
 }
