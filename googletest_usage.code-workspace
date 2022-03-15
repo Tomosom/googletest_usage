@@ -11,10 +11,9 @@
 			"**/*.a": true,
 			"**/*.exe": true,
 
-			"googletest-release-1.11.0/.github":true,
-			"googletest-release-1.11.0/ci":true,
-			"googletest-release-1.11.0/docs":true,
-			"1_googletest_note":true
+			"1_googletest-release-1.11.0/.github":true,
+			"1_googletest-release-1.11.0/ci":true,
+			"1_googletest-release-1.11.0/googletest_note":true,
 		},
 		"files.associations": {
 			"iostream": "cpp"
