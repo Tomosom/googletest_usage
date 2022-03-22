@@ -10,7 +10,7 @@ INCS	:= \
 SRCS	:= \
 	test.cpp \
 	test_parse.cpp \
-	test_01_basic.cpp \
+	test_suite.cpp \
 
 LIB_FLAGS:= \
 	-L../1_googletest-release-1.11.0/lib -lgtest \

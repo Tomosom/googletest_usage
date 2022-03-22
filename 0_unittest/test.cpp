@@ -1,65 +1,33 @@
-#include "gtest.h"
 #include "test.h"
+#include "test_parse.h"
 
-int add(int a, int b)
+static std::map<std::string, module_unittest_opt_s> s_opt_map;
+
+class GlobalTest:public testing::Environment
 {
-	return a + b;
-}
+public:
+	virtual void SetUp()
+	{
+		cout << "setup_global" << endl;
+	}
+	virtual void TearDown()
+	{
+		cout << "teardown_global" << endl;
+	}
+};
 
-TEST(testSuit1, test0)
-{
-	EXPECT_EQ(add(2, 3), 5);
-}
+TEST_MODULE(suite1, case1);
+TEST_MODULE(suite1, case2);
+TEST_MODULE(suite2, case1);
+TEST_MODULE(suite2, case2);
 
-TEST(testSuit1, test1)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test0)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test1)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test2)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test3)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test4)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test5)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test6)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
-TEST(testSuit2, test7)
-{
-	EXPECT_EQ(add(2, 3), 6);
-}
-
+// ./test.exe --module_cfgpath=./config/test.cfg
 int main(int argc, char **argv)
 {
+	module_unittest_opt_parse(argc, argv, s_opt_map);
 	testing::GTEST_FLAG(color) = "yes";
 	testing::GTEST_FLAG(output) = "xml:./test.xml";
 	testing::InitGoogleTest(&argc, argv);
+	testing::AddGlobalTestEnvironment(new GlobalTest());
 	return RUN_ALL_TESTS();
 }
