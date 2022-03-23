@@ -8,20 +8,20 @@ class GlobalTest:public testing::Environment
 public:
 	virtual void SetUp()
 	{
-		cout << "setup_global" << endl;
+		cout << "global_setup" << endl;
 	}
 	virtual void TearDown()
 	{
-		cout << "teardown_global" << endl;
+		cout << "global_teardown" << endl;
 	}
 };
 
-TEST_MODULE(suite1, case1);
-TEST_MODULE(suite1, case2);
-TEST_MODULE(suite2, case1);
-TEST_MODULE(suite2, case2);
+TEST_MODULE_WITH_CFG(suite1, case1, config1);
+TEST_MODULE_WITH_CFG(suite1, case2, config2);
+TEST_MODULE_WITH_CFG(suite2, case1, config1);
+TEST_MODULE_WITH_CFG(suite2, case2, config2);
 
-// ./test.exe --module_cfgpath=./config/test.cfg
+// ./test.exe --module_cfgpath=./config/test_path.cfg
 int main(int argc, char **argv)
 {
 	module_unittest_opt_parse(argc, argv, s_opt_map);

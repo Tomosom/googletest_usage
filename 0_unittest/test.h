@@ -10,6 +10,8 @@ typedef struct module_unittest_opt {
 	char ext_path[256];
 } module_unittest_opt_s;
 
+#define print_line() printf("line: %d\n", __LINE__)
+
 #define TEST_MODULE(suite_name, case_name) \
 	TEST(suite_name, case_name) \
 	{ module_##suite_name##_##case_name(NULL); }
