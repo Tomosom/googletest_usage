@@ -2,7 +2,7 @@
 
 #define CFG_PATH "--module_cfgpath="
 
-void print_param(module_param_s *param)
+void print_param_fmt_01(module_param_fmt_01_s *param)
 {
 	printf("\nprint param start\n");
 	printf("pipe: %d\n",		param->pipe);
@@ -42,6 +42,32 @@ void print_param(module_param_s *param)
 		param->sub_param.score[0],
 		param->sub_param.score[1],
 		param->sub_param.score[2]);
+}
+
+void print_param_fmt_02(module_param_fmt_02_s *param)
+{
+	printf("\nprint param start\n");
+	printf("path: %s\n", param->path);
+	printf("pipe: %d\n", param->pipe);
+	printf("db: %lf\n", param->db);
+
+	printf("name: %s,%s,%s\n",
+		param->name[0],
+		param->name[1],
+		param->name[2]);
+
+	printf("square: %d,%d,%d,%d,%d,%d\n",
+		param->square[0][0],
+		param->square[0][1],
+		param->square[0][2],
+		param->square[1][0],
+		param->square[1][1],
+		param->square[1][2]);
+
+	printf("score: %lf,%lf,%lf\n",
+		param->score[0],
+		param->score[1],
+		param->score[2]);
 }
 
 int module_unittest_json_str_parse(char *p_dest, cJSON *p_item_obj, const char *p_key)

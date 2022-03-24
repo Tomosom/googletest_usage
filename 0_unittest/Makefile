@@ -6,11 +6,10 @@ INCS	:= \
 	-I../1_googletest-release-1.11.0/googletest/include/gtest \
 	-I../2_json \
 	-I../3_md5 \
+	-Iparse \
+	-I. \
 
-SRCS	:= \
-	test.cpp \
-	test_parse.cpp \
-	test_suite.cpp \
+SRCS	:= $(wildcard *.cpp parse/*.cpp)
 
 LIB_FLAGS:= \
 	-L../1_googletest-release-1.11.0/lib -lgtest \

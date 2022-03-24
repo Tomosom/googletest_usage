@@ -25,16 +25,29 @@ typedef struct module_sub_param {
 	double score[3];
 } module_sub_param_s;
 
-typedef struct module_param {
+typedef struct module_param_fmt_01 {
 	int pipe;
 	char input_path[256];
 	char output_path[256];
 	char md5[64];
 	double db;
 	module_sub_param_s sub_param;
-} module_param_s;
+} module_param_fmt_01_s;
 
-void print_param(module_param_s *param);
+typedef struct module_param_fmt_02 {
+	char path[256];
+	int pipe;
+	double db;
+	char name[3][256];
+	int square[2][3];
+	double score[3];
+} module_param_fmt_02_s;
+
+int module_unittest_fmt_01_parse(const char *cfg_path, module_param_fmt_01_s *param);
+int module_unittest_fmt_02_parse(const char *cfg_path, module_param_fmt_02_s *param);
+
+void print_param_fmt_01(module_param_fmt_01_s *param);
+void print_param_fmt_02(module_param_fmt_02_s *param);
 
 int module_unittest_json_str_parse(char *p_dest, cJSON *p_item_obj, const char *p_key);
 int module_unittest_json_int_parse(int *p_dest, cJSON *p_item_obj, const char *p_key);

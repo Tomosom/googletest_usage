@@ -16,10 +16,10 @@ public:
 	}
 };
 
-TEST_MODULE_WITH_CFG(suite1, case1, config1);
-TEST_MODULE_WITH_CFG(suite1, case2, config2);
-TEST_MODULE_WITH_CFG(suite2, case1, config1);
-TEST_MODULE_WITH_CFG(suite2, case2, config2);
+TEST_MODULE_WITH_CFG(suite1, case1, fmt_01_cfg_01);
+TEST_MODULE_WITH_CFG(suite1, case2, fmt_01_cfg_02);
+TEST_MODULE_WITH_CFG(suite2, case1, fmt_02_cfg_01);
+TEST_MODULE_WITH_CFG(suite2, case2, fmt_02_cfg_02);
 
 // ./test.exe --module_cfgpath=./config/test_path.cfg
 int main(int argc, char **argv)
